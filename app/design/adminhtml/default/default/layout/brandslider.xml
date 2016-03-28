@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+	</default>
+    <brandslider_adminhtml_brandslider_index>
+		<reference name="head">	
+    		<action method="addJs"><script>magentothem/ma.jq.slide.js</script></action>
+    	</reference>
+        <reference name="content">
+            <block type="brandslider/adminhtml_brandslider" name="brandslider" />
+        </reference>
+    </brandslider_adminhtml_brandslider_index>
+</layout>

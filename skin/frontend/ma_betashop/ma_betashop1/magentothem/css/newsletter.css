@@ -1,0 +1,97 @@
+#newsletter_pop_up {
+background: #FFFFFF !important;
+color: #FFFFFF;
+display: none;
+height: 339px;
+margin: -195px 0 0 !important;
+min-width: 450px;
+padding: 25px 50px;
+top: 50% !important;
+width:600px;
+position: fixed !important;
+
+}
+#newsletter_pop_up .button.b-close{ color: #fff;}
+#newsletter_pop_up .button:after {
+  content: "close";
+  font-size: 10px;
+}
+#newsletter_pop_up .b-close {
+  color: #FFFFFF;
+  cursor: pointer;
+  display: block;
+  padding: 0 5px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #111111;
+  min-width: 70px;
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0;
+}
+ .button.b-close, .button.bClose {
+font: bold 131% sans-serif;
+padding: 10px 9px 2px;
+position: absolute;
+right: 0;
+top: -25px;
+}
+#newsletter_pop_up .b-close span:hover{color: #000}
+#newsletter_pop_up>.subscribe{
+	text-align: center;
+}
+.button {
+	color: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+}
+.title_subscribe>h1{
+font-size: 36px;
+font-weight: normal;
+margin-top: 60px;
+text-transform: capitalize;
+line-height: 30px;
+margin-bottom: 10px;
+color: #000;
+letter-spacing: 3px
+}
+.form-subscribe-header label{font-size: 14px;font-weight: normal;line-height:22px;margin: 8px 0;color: #7d7d7d; margin: 15px 0;}
+#newsletter_subscribe{
+margin: 0 0 20px;
+width:380px;
+height: 41px;
+line-height: 40px;
+padding-left: 10px;
+border: 0;
+background: #ebebeb;
+}
+#newsletter_pop_up .button_subscribe{
+color: #000;
+padding: 10px 20px;
+border: none;
+font-size: 11px;
+font-weight: 700;
+text-transform: uppercase;
+border-radius: 0px;
+border: 1px solid #ebebeb;
+}
+.subscribe-bottom{ color: #000; margin-top: 15px;}
+.subscribe-bottom input{ margin: 0;}
+#newsletter_pop_up .button_subscribe:hover{background: #7ecc13; color: #fff; border-color: #7ecc13}
+#advice-required-entry-newsletter{
+	font-size: 12px;
+	margin: -10px auto 15px;
+	width: 130px;
+	display:none;
+}
+#newsletter_pop_up .actions{}
+@media (max-width: 767px){ 
+	.b-modal,
+	#newsletter_pop_up{ display: none !important;}
+}

@@ -1,0 +1,120 @@
+<?php 
+/******************************************************
+ * Website: http://www.plazathemes.com
+*******************************************************/
+?> 
+<?php if($this->getConfig('enabled')){ ?>	  <!-- start enable -->
+	<?php $cur_store = Mage::app()->getStore()->getId() ?>
+	<div class="ma-banner7-container">
+	<div class="flexslider">
+		<div class="ma-loading"></div>
+		<ul class="slidesss">
+			
+				<?php
+					// Get data banner
+					$slide = $this->getDataBanner7();
+					$path = Mage::getBaseUrl('media');					
+					$qty_Item = $this->getConfig('qty_item');
+					/* Get max item & qty item */
+					if ($qty_Item > count($slide)) {
+						$qty_Item = count($slide);
+					}
+				?>
+				<?php
+					$i = 1;
+					foreach($slide as $s)
+					{
+						
+						if($i <= $qty_Item) {
+							//Get images slide show
+							$imag = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$s['image'];
+							$imag2 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$s['image2'];
+							$imag3 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$s['image3'];
+					?>
+						<li>
+							<div class="timethai" style=" 
+								position:absolute;
+								top:0;
+								left:0;
+								background-color: rgba(38, 57, 64, 0.42);
+								height:5px;
+								-webkit-animation: myfirst <?php echo $this->getConfig('speed') ?>ms ease-in-out;
+								-moz-animation: myfirst <?php echo $this->getConfig('speed') ?>ms ease-in-out;
+								-ms-animation: myfirst <?php echo $this->getConfig('speed') ?>ms ease-in-out;
+								animation: myfirst <?php echo $this->getConfig('speed') ?>ms ease-in-out;
+							   
+							   ">
+							</div>
+							<?php if( $s['link'] ): ?>
+								<a href="<?php echo $s['link']?>" title="<?php echo $this->__('Read more') ?>">
+							<?php  endif; ?>
+							<img src="<?php echo $imag;?>" alt="" />
+							<?php if( $s['link'] ): ?>
+								</a>
+							<?php  endif; ?>
+							<div class="banner7-caption">
+								<div class="banner7-content hidden-xs">
+									<div class="content-title">
+										<?php if($s['title']): ?><h1><?php echo $this->__($s['title']) ?></h1><?php endif; ?>
+										<?php if($s['title2']): ?><h2><span><?php echo $this->__($s['title2']) ?></span></h2><?php endif; ?>
+										<?php if($s['description']): ?><div class="banner7-desciption">
+											<?php echo $this->__($s['description']) ?>
+										</div><?php endif; ?>
+										<?php if($s['title3']): ?><h3><span><?php echo $this->__($s['title3']) ?></span></h3><?php endif; ?>
+										<?php if( $s['link'] ) { ?>
+											<div class="banner7-readmore">
+												<a href="<?php echo $s['link']?>" title="<?php echo $this->__('View Collection') ?>"><?php echo $this->__('View Collection') ?></a>	
+											</div>
+										<?php } ?>
+										<?php if($s['image2']): ?><img class="img1" src="<?php echo $imag2;?>" alt="" title="#banner7-caption<?php echo $i; ?>"  /><?php endif; ?>
+										<?php if($s['image3']): ?><img class="img2" src="<?php echo $imag3;?>" alt="" title="#banner7-caption<?php echo $i; ?>"  /><?php endif; ?>
+									</div>
+								</div>
+							</div>
+							
+						</li>
+					<?php $i++; ?>
+				<?php
+                        }//end if
+                    } // end foreach
+				?>
+		</ul>
+		<script type="text/javascript">
+			$jq(window).load(function() {
+				  $jq(document).off('mouseenter').on('mouseenter', '.pos-slideshow', function(e){
+				  $jq('.ma-banner7-container .timethai').addClass('pos_hover');
+				});
+
+				$jq(document).off('mouseleave').on('mouseleave', '.pos-slideshow', function(e){
+					$jq('.ma-banner7-container .timethai').removeClass('pos_hover');
+				});
+			});
+			$jq(window).load(function(){
+			  $jq('.ma-banner7-container .flexslider').flexslider({
+				slideshow: true,
+				animation: "<?php echo $this->getConfig('animation') ?>",
+				slideshowSpeed: <?php echo $this->getConfig('speed') ?>,
+				animationSpeed: <?php echo $this->getConfig('interval') ?>,
+				<?php if (!$this->getConfig('nav_ctrl')) { ?>
+				controlNav: false,
+				<?php } ?>
+				<?php if (!$this->getConfig('next_back')) { ?>
+				directionNav: false,
+				<?php } ?>
+				start: function(slider){
+					$jq('.ma-loading').css("display","none");
+					//$jq('.banner7-title, .banner7-des, .banner7-readmore').css("left","100px");
+				},
+				before: function(){ 
+					//$jq('.banner7-title, .banner7-des').css("left","-550px");
+					//$jq('.banner7-readmore').css("left","-1500px"); 
+				}, 
+				after: function(){ 
+					//$jq('.banner7-title, .banner7-des, .banner7-readmore').css("left","100px") 
+				}
+			  });
+			});
+		</script>
+	</div>
+	</div>
+<?php } ?> <!-- end enable -->

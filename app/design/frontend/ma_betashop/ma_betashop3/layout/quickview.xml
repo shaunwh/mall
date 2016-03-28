@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>magentothem/ma.jq.slide.js</script></action>
+            <action method="addJs"><script>magentothem/ma.bxslider.min.js</script></action>
+            <action method="addCss" ifconfig="quickview/quickview_config/enabled"><name>magentothem/css/ma_quickview.css</name></action>
+            <action method="addJs" ifconfig="quickview/quickview_config/enabled"><script>magentothem/quickview/ma_quickview.js</script></action>
+            <action method="addJs" ifconfig="quickview/quickview_config/enabled"><script>magentothem/quickview/jquery.elevatezoom.js</script></action>
+
+            <action method="addJs"><script>varien/product.js</script></action>
+            <action method="addJs"><script>varien/configurable.js</script></action>
+
+            <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params/><!--<if/><condition>can_load_calendar_js</condition>--></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
+            <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name><!--<params/><if/><condition>can_load_calendar_js</condition>--></action>
+
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="magentothem_quickview/quickview" name="magentothem.quickview" template="magentothem/quickview/quickview.phtml" />
+        </reference>
+    </default>
+
+    <magentothem_quickview_index_view>
+        <reference name="product.info.media">
+            <action method="setTemplate" ifconfig="prozoom/prozoom_config/enabled">
+                <template>magentothem/quickview/product/view/media.phtml</template>
+            </action>
+        </reference>
+
+        <remove name="product.info.extrahint" />
+        <remove name="alert.urls" />
+        <remove name="product.info.tabs" />
+        <remove name="product.info.upsell" />
+        <remove name="magentothem.relatedslider" />
+    </magentothem_quickview_index_view>
+
+</layout>

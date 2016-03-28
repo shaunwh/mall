@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name ='head'>
+            <action method="addJs" >
+                <script>magentothem/ma.jq.slide.js</script>
+            </action>
+            <action method="addJs" >
+                <script>magentothem/jquery-ui.js</script>
+            </action>
+            <action method="addCss">
+                <script>layerednavigationajax/jquery-ui.css</script>
+            </action>
+        </reference>
+
+    </default>
+    <catalog_category_view>
+        <reference name = "head">
+            <block type="layerednavigationajax/layerednavigationajax" name="layerednavigationajax" template="magentothem/layerednavigationajax/layerednavigationajax.phtml" />
+        </reference>    
+    </catalog_category_view>
+     <catalogsearch_result_index>
+        <reference name = "head">
+            <block type="layerednavigationajax/layerednavigationajax" name="layerednavigationajax" template="magentothem/layerednavigationajax/layerednavigationajax.phtml" />
+        </reference>    
+    </catalogsearch_result_index>
+    <catalog_category_default>
+        <reference name = "head">
+            <block type="layerednavigationajax/layerednavigationajax" name="layerednavigationajax" template="magentothem/layerednavigationajax/layerednavigationajax.phtml" />
+        </reference>    
+    </catalog_category_default>
+    <layerednavigationajax_index_index>
+        <reference name="content">
+            <block type="layerednavigationajax/layerednavigationajax" name="layerednavigationajax" template="magentothem/layerednavigationajax/layerednavigationajax.phtml" />
+        </reference>
+    </layerednavigationajax_index_index>
+</layout> 

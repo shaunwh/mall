@@ -1,0 +1,57 @@
+<?php
+  $loadingImage = Mage::getBaseUrl('media').'theme/' . Mage::getStoreConfig('searchajax/searchajax_config/loading_image');
+  $enableModule = Mage::getStoreConfig('searchajax/searchajax_config/enabled');
+  if(!$enableModule) return ;
+?>
+<script type ="text/javascript">
+	//<![CDATA[
+    $jq(document).ready(function(){
+        var base_url = "<?php echo Mage::getBaseUrl();?>";
+        //$jq('#search_mini_form').attr('id','search_ajax');
+        $jq('#search').bind('keyup',function(e){
+            var loading_image = "<?php echo $loadingImage;?>";
+            var q = $jq(this).val();
+            if(q.length<1){
+                $jq('#search_complete').html('');
+                return false;
+            }
+            //console.log(e);
+            //var keypress= e.target.value.length ;
+            if(q.length <3) return false;
+            
+            $jq('.loading_image_search').show();
+            $jq('.loading_image_search').html('<img src ="'+loading_image+'" alt=""/>');
+            var url = base_url + 'searchajax?q='+q;
+             setTimeout(
+              function() {
+                  new Ajax.Request(
+                    url,
+                    {
+                        method: "post",
+                        postBody: "",
+                        parameters:$jq('#search_mini_form_ajax').serialize(),
+                        onException: function (xhtml, e)
+                        {
+                            alert("Exception : " + e);
+                        },
+                        onComplete: function (xhtml)
+                        {
+                              $jq('#search_autocomplete').html(xhtml.responseText);
+                              $jq('.loading_image_search').hide();
+							  $jq('#search_autocomplete').attr('style','display:block!important');
+                        }
+
+                    });
+           
+              }, 1000);
+              return false;
+        });
+		$jq('body').bind('click',function() {
+			 $jq('#search_autocomplete').attr('style','display:none!important');
+		});
+        $jq('.main-container').live('click', function(){
+            $jq('#search_autocomplete').slideToggle('slowly');
+        })
+    })
+	//]]>
+</script>

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magentothem_Layerednavigationajax>
+            <version>1.8.0</version>
+        </Magentothem_Layerednavigationajax>
+    </modules>
+    <frontend>
+  <!--      <routers>
+            <layerednavigationajax>
+                <use>standard</use>
+                <args>
+                    <module>Magentothem_Layerednavigationajax</module>
+                    <frontName>layerednavigationajax</frontName>
+                </args>
+            </layerednavigationajax>
+      
+            <catalog>
+                <args>
+                    <modules>
+                        <Magentothem_Layerednavigationajax before="Mage_Catalog">Magentothem_Layerednavigationajax</Magentothem_Layerednavigationajax>
+                    </modules>
+                </args>
+            </catalog>
+        </routers>-->
+        <routers>
+            <catalog>
+                <args>
+                    <modules>
+                        <Magentothem_Layerednavigationajax before="Mage_Catalog">Magentothem_Layerednavigationajax</Magentothem_Layerednavigationajax>
+                    </modules>
+                </args>
+            </catalog>
+            <catalogsearch>
+                <args>
+                    <modules>
+                        <Magentothem_Layerednavigationajax before="Mage_CatalogSearch">Magentothem_Layerednavigationajax</Magentothem_Layerednavigationajax>
+                    </modules>
+                </args>
+            </catalogsearch>
+            <tag>
+                <args>
+                    <modules>
+                        <Magentothem_Layerednavigationajax before="Mage_Tag">Magentothem_Layerednavigationajax</Magentothem_Layerednavigationajax>
+                    </modules>
+                </args>
+            </tag>
+        </routers>
+        <layout>
+            <updates>
+                <layerednavigationajax>
+                    <file>layerednavigationajax.xml</file>
+                </layerednavigationajax>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+		<menu>
+			<magentothem translate="title" module="layerednavigationajax">
+				<title>Magentothem</title>
+				<sort_order>71</sort_order>               
+				<children>
+					<layerednavigationajax translate="title" module="layerednavigationajax">
+						<title>Layered Navigation Ajax</title>
+						<sort_order>35</sort_order>
+						<children>
+							<configuration>
+								<title>Configuration</title>
+								<sort_order>1</sort_order>
+								<action>adminhtml/system_config/edit/section/layerednavigationajax</action>
+							</configuration>
+						</children>
+					</layerednavigationajax>
+				</children>
+			</magentothem>
+		</menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <layerednavigationajax>
+                                            <title>Layered Navigation Ajax</title>
+                                        </layerednavigationajax>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>   
+    <global>
+        <models>
+            <layerednavigationajax>
+                <class>Magentothem_Layerednavigationajax_Model</class>
+            </layerednavigationajax>
+            <catalog>
+                <rewrite>
+                    <layer>Magentothem_Layerednavigationajax_Model_Catalog_Layer</layer>
+                </rewrite>
+            </catalog>
+			 <catalog>
+                <rewrite>
+                    <layer_filter_price>Magentothem_Layerednavigationajax_Model_Catalog_Layer_Filter_Price</layer_filter_price>
+                </rewrite>
+            </catalog>
+            <catalogsearch>
+                <rewrite>
+                    <layer>Magentothem_Layerednavigationajax_Model_Catalogsearch_Layer</layer>
+                </rewrite>
+            </catalogsearch>
+        </models>
+        <blocks>
+            <layerednavigationajax>
+                <class>Magentothem_Layerednavigationajax_Block</class>
+            </layerednavigationajax>
+        </blocks>
+        <blocks>
+            <catalog>
+                <rewrite >
+                    <layer_filter_price>Magentothem_Layerednavigationajax_Block_Catalog_Layer_Filter_Price</layer_filter_price>
+                    <layer_filter_attribute>Magentothem_Layerednavigationajax_Block_Catalog_Layer_Filter_Attribute</layer_filter_attribute>
+                    <layer_filter_decimal>Magentothem_Layerednavigationajax_Block_Catalog_Layer_Filter_Decimal</layer_filter_decimal>
+                    <layer_filter_category>Magentothem_Layerednavigationajax_Block_Catalog_Layer_Filter_Category</layer_filter_category>
+             </rewrite>
+            </catalog>
+              <catalogsearch>
+                <rewrite >
+                    <layer_filter_attribute>Magentothem_Layerednavigationajax_Block_Catalogsearch_Layer_Filter_Attribute</layer_filter_attribute>
+                    <layer_filter_decimal>Magentothem_Layerednavigationajax_Block_Catalogsearch_Layer_Filter_Decimal</layer_filter_decimal>
+                </rewrite>
+            </catalogsearch>
+            <tag>
+                <rewrite>
+                    <popular>Magentothem_Layerednavigationajax_Block_Tag_Popular</popular>
+                </rewrite>
+            </tag>
+        </blocks>
+        <helpers>
+            <layerednavigationajax>
+                <class>Magentothem_Layerednavigationajax_Helper</class>
+            </layerednavigationajax>
+        </helpers>
+    </global>
+    <default>
+        <layerednavigationajax>
+            <layerfiler_config>
+                <enabled>1</enabled>
+                <toolbar_status>1</toolbar_status>
+                <slider_status>1</slider_status>
+                <tag_status>1</tag_status>
+                <loading_image>default/loader.gif</loading_image>
+                <trans_image>default/bg4.png</trans_image>
+                <bg_opacity>0.7</bg_opacity>
+            </layerfiler_config>
+        </layerednavigationajax>
+    </default>
+</config>

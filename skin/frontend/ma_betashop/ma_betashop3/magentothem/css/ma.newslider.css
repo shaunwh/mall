@@ -1,0 +1,223 @@
+/**
+ * BxSlider v4.0 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2012
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+
+
+/** RESET AND LAYOUT
+===================================*/
+
+.ma-newproductslider-container  .bx-wrapper {
+	position: relative;
+	padding: 0;
+	*zoom: 1;
+}
+
+.ma-newproductslider-container  .bx-wrapper img {
+	max-width: 100%;
+	display: block;
+}
+
+/** THEME
+===================================*/
+
+.ma-newproductslider-container  .bx-wrapper .bx-pager,
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto {
+	position: absolute;
+	bottom: -30px;
+	width: 100%;
+}
+
+/* LOADER */
+
+.ma-newproductslider-container  .bx-wrapper .bx-loading {
+	min-height: 50px;
+	background: url(images/bx_loader.gif) center center no-repeat #fff;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2000;
+}
+
+/* PAGER */
+
+.ma-newproductslider-container  .bx-wrapper .bx-pager {
+	text-align: right;
+	top:100%;
+	font-size: .85em;
+	font-family: Arial;
+	font-weight: bold;
+	height: 50px;
+	color: #666;
+	width: auto; 
+	left: 50%;
+	margin-left: -30px;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-pager .bx-pager-item,
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+	display: inline-block;
+	*zoom: 1;
+	*display: inline;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-pager.bx-default-pager a {
+	text-indent: -9999px;
+	display: block;
+	width: 17px;
+	height: 17px;
+	margin: 0 3px;
+	outline: 0;
+	text-align: initial;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-pager.bx-default-pager a:hover,
+.ma-newproductslider-container  .bx-wrapper .bx-pager.bx-default-pager a.active {
+
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+
+.ma-newproductslider-container  .bx-wrapper .bx-prev {
+	left: 10px;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-next {
+	right: 10px;
+}
+
+/*.ma-newproductslider-container  .bx-wrapper .bx-prev:hover {
+	background-position: 0 0;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-next:hover {
+	background-position: -43px 0;
+}*/
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls-direction a {
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls-direction a.disabled {
+	display: none;
+}
+
+/* AUTO CONTROLS (START / STOP) */
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto {
+	text-align: center;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto .bx-start {
+	display: block;
+	text-indent: -9999px;
+	width: 10px;
+	height: 11px;
+	outline: 0;
+	background: url(images/controls.png) -86px -11px no-repeat;
+	margin: 0 3px;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto .bx-start:hover,
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto .bx-start.active {
+	background-position: -86px 0;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto .bx-stop {
+	display: block;
+	text-indent: -9999px;
+	width: 9px;
+	height: 11px;
+	outline: 0;
+	background: url(images/controls.png) -86px -44px no-repeat;
+	margin: 0 3px;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto .bx-stop:hover,
+.ma-newproductslider-container  .bx-wrapper .bx-controls-auto .bx-stop.active {
+	background-position: -86px -33px;
+}
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+	text-align: left;
+	width: 80%;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+	right: 0;
+	width: 35px;
+}
+
+/* IMAGE CAPTIONS */
+
+.ma-newproductslider-container  .bx-wrapper .bx-caption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: #666\9;
+	background: rgba(80, 80, 80, 0.75);
+	width: 100%;
+}
+
+.ma-newproductslider-container  .bx-wrapper .bx-caption span {
+	color: #fff;
+	font-family: Arial;
+	display: block;
+	font-size: .85em;
+	padding: 10px;
+}
+
+.ma-newproductslider-container  .bx-wrapper li {
+
+}
+
+.ma-newproductslider-container .ma-loading {
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	z-index: 99;
+	background: url(../images/loader.gif) no-repeat ;
+	top: 50%;
+	left: 50%;
+	margin: -8px 0 0 -8px;
+}
+@media (max-width: 1060px) {
+	.ma-newproductslider-container .btn-cart { left: 96px; top: 100px;}
+}
+@media (max-width: 860px) {
+	.ma-newproductslider-container .btn-cart { left:95px;}
+}
+@media (max-width: 740px) {
+	.ma-newproductslider-container .btn-cart { left:100px; top: 100px;}
+}
+@media (max-width: 680px) {
+    .ma-newproductslider-container .item-inner .actions { top: 100px;}
+    .ma-newproductslider-container .item-inner:hover .actions { left: 10px; top: 100px;}
+	.ma-newproductslider-container .btn-cart { left:85px; top: 85px;}
+}
+@media (max-width: 480px) {
+	.ma-newproductslider-container .btn-cart { left: 50px; top:50px;}
+	.ma-featured-sldier-title { width:80%;}
+	.ma-newproductslider-container .flex-direction-nav a { display: none !important;}
+	.ma-newproductslider-container .item-inner:hover .actions { left: -23px; top: 50px;}
+	.ma-newproductslider-container .item-inner .actions {top: 50px;}
+}
+@media (max-width: 360px) {
+	.ma-featured-sldier-title { width: 100%;}
+	.ma-newproductslider-container .flexslider { margin: 20px 0 0;}
+	.ma-newproductslider-container .featuredproductslider-item { width: 235px !important;}
+	.ma-newproductslider-container .item-inner:hover .actions { left: 10px; top: 80px;}
+	.ma-newproductslider-container .item-inner .actions {top: 80px;}
+	.ma-newproductslider-container .flex-direction-nav .flex-prev { left: -18px;}
+	.ma-newproductslider-container .flex-direction-nav .flex-next { right: -18px;}
+}

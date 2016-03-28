@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magentothem_Newsletterpopup>
+            <version>0.1.0</version>
+        </Magentothem_Newsletterpopup>
+    </modules>
+    <frontend>
+        <routers>
+            <newsletterpopup>
+                <use>standard</use>
+                <args>
+                    <module>Magentothem_Newsletterpopup</module>
+                    <frontName>newsletterpopup</frontName>
+                </args>
+            </newsletterpopup>
+        </routers>
+        <layout>
+            <updates>
+                <newsletterpopup>
+                    <file>newsletterpopup.xml</file>
+                </newsletterpopup>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <newsletterpopup>
+                <use>admin</use>
+                <args>
+                    <module>Magentothem_Newsletterpopup</module>
+                    <frontName>newsletterpopup</frontName>
+                </args>
+            </newsletterpopup>
+        </routers>
+    </admin>
+    <adminhtml>
+		<menu>
+            <magentothem module="newsletterpopup">
+                <title>Magentothem</title>
+                <sort_order>95</sort_order>               
+                <children>
+                    <newsletterpopup translate="title" module="newsletterpopup">
+                        <title>Newsletter Popup</title>
+                        <sort_order>1</sort_order>
+                        <children>
+                            <configuration>
+                                <title>Configuration</title>
+                                <sort_order>1</sort_order>
+                                <action>adminhtml/system_config/edit/section/newsletterpopup</action>
+                            </configuration>
+                        </children>
+                    </newsletterpopup>
+               </children>
+            </magentothem>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Magentothem_Newsletterpopup>
+                            <title>Newsletter Popup Module</title>
+                            <sort_order>10</sort_order>
+                        </Magentothem_Newsletterpopup>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>   
+    <global>
+        <helpers>
+            <newsletterpopup>
+                <class>Magentothem_Newsletterpopup_Helper</class>
+            </newsletterpopup>
+        </helpers>
+    </global>
+	<default>
+        <newsletterpopup>
+            <general>
+                <enabled>1</enabled>
+                <turnjquery>1</turnjquery>
+                <title>NEWSLETTER</title>
+                <content>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's...</content>
+                <width>790</width>
+                <height>390</height>
+                <background>default/Newsletter_03.jpg</background>
+                <cookietimeout>1</cookietimeout>
+            </general>
+        </newsletterpopup>
+    </default>
+</config>

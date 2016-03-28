@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+<!--    <default>
+        <reference name="head">
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+        </reference>
+    </default>-->
+    <adminhtml_system_config_edit>
+  <reference name="head">
+   <action method="addJs"><file>jscolor/jscolor.js</file></action>
+  </reference>
+ </adminhtml_system_config_edit>
+
+    <timer_adminhtml_timer_index>
+        <reference name="content">
+            <block type="timer/adminhtml_timer" name="timer" />
+        </reference>
+    </timer_adminhtml_timer_index>
+</layout>

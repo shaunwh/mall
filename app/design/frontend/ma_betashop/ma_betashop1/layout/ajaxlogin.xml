@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <action method="addCss"><name>magentothem/css/ajaxlogin.css</name></action>
+            <action method="addJs"><script>magentothem/ma.jq.slide.js</script></action>
+            <action method="addJs" ifconfig="ajax_login/general_info/enable_al"><script>magentothem/ajaxlogin/ma.ajaxlogin.js</script></action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="magentothem_ajaxlogin/login" name="ajax.logout.body" template="magentothem/ajaxlogin/logout.phtml"/>
+            <block type="magentothem_ajaxlogin/login" name="ajax.login.body"  template="magentothem/ajaxlogin/login.phtml"/>
+        </reference>
+    </default>
+
+    <customer_logged_out>
+        <reference name="top.links">
+            <action method="removeLinkByUrl" ifconfig="ajax_login/general_info/enable_al">
+                <url helper="customer/getLoginUrl"/>
+            </action>
+            <action method="addLink" translate="label title" module="magentothem_ajaxlogin"
+                    ifconfig="ajax_login/general_info/enable_al">
+                <label>Log In</label>
+                <url>javascript:void(0);</url>
+                <title>Log In</title>
+                <prepare/>
+                <urlParams/>
+                <position>101</position>
+                <liParams/>
+                <aParams>class="a-login-link"</aParams>
+            </action>
+        </reference>
+    </customer_logged_out>
+
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="removeLinkByUrl" ifconfig="ajax_login/general_info/enable_al">
+                <url helper="customer/getLogoutUrl"/>
+            </action>
+            <action method="addLink" translate="label title" module="magentothem_ajaxlogin"
+                    ifconfig="ajax_login/general_info/enable_al">
+                <label>Log Out</label>
+                <url>javascript:void(0);</url>
+                <title>Log Out</title>
+                <prepare/>
+                <urlParams/>
+                <position>101</position>
+                <liParams/>
+                <aParams>class="a-logout-link"</aParams>
+            </action>
+        </reference>
+    </customer_logged_in>
+</layout>

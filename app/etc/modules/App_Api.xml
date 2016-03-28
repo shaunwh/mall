@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <App_Api>
+            <active>true</active>
+            <codePool>local</codePool>
+        </App_Api>
+    </modules>
+</config>

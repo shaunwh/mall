@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <cms_index_index>
+        <reference name="head">
+			<!-- <action method="addCss" ifconfig="brandslider/brandslider_config/enabled"><stylesheet>magentothem/css/owl.carousel.css</stylesheet></action> -->
+			<!-- <action method="addJs" ifconfig="brandslider/brandslider_config/enabled"><script>magentothem/ma.jq.slide.js</script></action> -->
+			<!-- <action method="addJs" ifconfig="brandslider/brandslider_config/enabled"><script>magentothem/owl.carousel.js</script></action> -->           
+        </reference>
+        
+    </cms_index_index>
+	<default>
+		<reference name="block_group">
+            <!--<block type="brandslider/brandslider" name="brandslider" template="magentothem/brandslider/brandslider.phtml" />-->
+            <!-- <block type="brandslider/brandslider" name="brand.slider" as="brand.slider">
+                <action method="setTemplate" ifconfig="brandslider/brandslider_config/enabled"><template>magentothem/brandslider/brandslider.phtml</template></action>
+            </block> -->
+        </reference>
+	</default>
+</layout> 

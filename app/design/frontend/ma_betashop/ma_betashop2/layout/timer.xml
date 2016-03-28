@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+         <reference name="head">
+             <action method="addJs"><script>magentothem/timer.js</script></action>
+             <action method="addCss"><stylesheet>magentothem/css/timer.css</stylesheet></action>
+        </reference>
+    </default>
+    <!-- <catalog_category_default>
+        <update handle="content"/>
+	<reference name="category.products">
+            <block type="timer/list" name="list" as="list" />
+	</reference>
+    </catalog_category_default>
+	
+	<catalog_category_layered>
+        <update handle="content"/>
+	<reference name="category.products">
+            <block type="timer/list" name="list" as="list" />
+	</reference>
+    </catalog_category_layered> -->
+
+    <!-- <catalog_product_view>
+        <update handle="content"/>
+	<reference name="product.info.addtocart">
+            <block type="timer/view" name="view" as="view" />
+	</reference>
+    </catalog_product_view> -->
+
+    <!-- <catalogsearch_advanced_result>
+        <reference name="catalogsearch_advanced_result">
+            <block type="timer/list" name="list" as="list" />
+	</reference>
+    </catalogsearch_advanced_result>
+    
+    <catalogsearch_result_index>
+        <reference name="search.result">
+            <block type="timer/list" name="list" as="list" />
+	</reference>
+    </catalogsearch_result_index> -->
+
+	<cms_index_index>
+        <reference name="head">
+			<action method="addCss"><stylesheet>magentothem/css/owl.carousel.css</stylesheet></action>
+			<action method="addJs"><script>magentothem/ma.jq.slide.js</script></action>
+			<action method="addJs"><script>magentothem/owl.carousel.js</script></action>
+		</reference>
+        <reference name="left">
+            <block type="timer/timer" name="ma.timer" before="-" template="magentothem/timer/timer.phtml" />
+        </reference>
+    </cms_index_index>
+</layout>

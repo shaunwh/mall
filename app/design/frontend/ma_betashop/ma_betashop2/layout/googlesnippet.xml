@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="before_body_end">
+            <block type="magentothem_googlerichsnippet/snippet" name="google_snippet" as="google.snippet"
+                   template="magentothem/googlerichsnippet/snippets.phtml" />
+        </reference>
+    </default>
+</layout>

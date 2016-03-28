@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <cms_index_index>
+        <reference name="head">
+            <action method="addCss" ifconfig="newsletterpopup/general/enabled"><stylesheet>magentothem/css/newsletter.css</stylesheet></action>
+			<action method="addJs" ifconfig="newsletterpopup/general/turnjquery"><script>magentothem/ma.jq.slide.js</script></action>
+            <action method="addJs" ifconfig="newsletterpopup/general/enabled"><script>magentothem/jquery.bpopup.min.js</script></action>
+            <action method="addJs" ifconfig="newsletterpopup/general/enabled"><script>magentothem/jquery.easing.1.3.js</script></action>
+        </reference>
+		<reference name="before_body_end">
+			<block type="core/template" name="newsletter_popup" as="newsletter_popup" template="magentothem/newsletterpopup/newsletterpopup.phtml"/>
+		</reference>
+    </cms_index_index>
+</layout> 

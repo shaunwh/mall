@@ -1,0 +1,88 @@
+<?php if($this->getConfig('enabled')){ // start enable module?>
+<?php $this->getProducts() ?>
+<?php $_productCollection=$this->getProductCollection() ?>
+<div class="ma-brand-slider-contain">
+    <?php
+        $slide = $this->getDataBrandslider();
+		$path = Mage::getBaseUrl('media');	
+        $qty_Item = $this->getConfig('qty');
+        /* Get max item & qty item */
+        if ($qty_Item > count($slide)) {
+            $qty_Item = count($slide);
+        }
+		
+		$auto = $this->getConfig('auto');
+		$itemsDefault = $this->getConfig('itemsDefault');
+		$itemsDesktop = $this->getConfig('itemsDesktop');
+		$itemsDesktopSmall = $this->getConfig('itemsDesktopSmall');
+		$itemsTablet = $this->getConfig('itemsTablet');
+		$itemsMobile = $this->getConfig('itemsMobile');
+		$speed = $this->getConfig('speed');
+		$next_back = $this->getConfig('next_back');
+		$nav_ctrl = $this->getConfig('nav_ctrl');
+		$rows = $this->getConfig('row_show');
+    ?>	
+		<!--<div class="ma-title">
+			<h2><?php echo $this->__('Our brands')?></h2>
+		</div>-->
+		<div class="row">
+          	<ul class="owl">
+				<?php
+					$i = 1;
+					$j = 0;
+					foreach($slide as $s)
+					{
+						if($i <= $qty_Item) {
+							//Get images slide show
+							$st1 = $s['image'];
+							$p1 = strpos($st1,'brandslider');
+							$st2 = substr($st1,$p1+11);
+							$p2 = strpos($st2,'"');
+							$imag = substr($st2,0,$p2);
+				?>
+                <?php if($j %$rows == 0) echo "<li class='item'>"; ?>
+					<div class="item-innner">	    																											<?php if( $s['link'] ) { ?>
+							<a href="<?php echo $s['link']?>" title=""><img src="<?php echo $path.'magentothem/brandslider'.$imag;?>" alt="" /></a>												
+						<?php } else { ?>
+							<img src="<?php echo $path.'magentothem/brandslider'.$imag;?>" alt="" />
+						<?php } ?>																																	             
+                        <?php if( $this->getConfig('description')): ?>
+                            <div class="ma-des">
+                                <?php if($s['title']): ?><div class="ma-des-title"><h2><?php echo $s['title'] ?></h2></div><?php endif; ?>
+                                <?php if($s['description']): ?><div class="ma-des-content"><?php echo $s['description'] ?></div><?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+					</div>
+                <?php $j++; ?>                   
+                <?php if($j %$rows == 0) echo "</li>"; ?>                   
+				<?php
+                    }//end if
+					$i++;
+                    } // end foreach
+				if($j %$rows != 0) echo "</li>"; 
+				?>
+            </ul>
+			</div>
+            <script type="text/javascript">
+			       //<![CDATA[
+					$jq(document).ready(function(){					  
+					  $jq(".ma-brand-slider-contain .owl").owlCarousel({
+							autoPlay : <?php if($auto) echo 'true'; else echo 'false'; ?>,
+							items : <?php if($itemsDefault) echo $itemsDefault; else echo '6'; ?>,
+							itemsDesktop : [1199,<?php if($itemsDesktop) echo $itemsDesktop; else echo '5'; ?>],
+							itemsDesktopSmall : [980,<?php if($itemsDesktopSmall) echo $itemsDesktopSmall; else echo '3'; ?>],
+							itemsTablet: [768,<?php if($itemsTablet) echo $itemsTablet; else echo '2'; ?>],
+							itemsMobile : [479,<?php if($itemsMobile) echo $itemsMobile; else echo '1'; ?>],
+							slideSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+							paginationSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+							rewindSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+							navigation : <?php if($next_back) echo 'true'; else echo 'false'; ?>,
+							stopOnHover : true,
+							pagination : <?php if($nav_ctrl) echo 'true'; else echo 'false'; ?>,
+							scrollPerPage:true,
+						});
+					});
+				//]]>
+				</script>	
+</div> 
+<?php } ?>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <!-- <action method="addJs" ifconfig="custommenu/general/enabled">
+                <script>magentothem/ma.jq.slide.js</script>
+            </action> -->
+            <!-- <action method="addCss" ifconfig="custommenu/general/enabled">
+                <stylesheet>magentothem/css/custommenu.css</stylesheet>
+            </action> -->
+            <action method="addJs" ifconfig="custommenu/general/enabled">
+                <script>magentothem/custommenu/custommenu.js</script>
+            </action>
+        </reference>
+        <reference name="catalog.topnav">
+            <action method="setTemplate" ifconfig="custommenu/general/enabled">
+                <template>magentothem/custommenu/custommenu.phtml</template>
+            </action>
+        </reference>
+    </default>
+</layout> 

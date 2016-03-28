@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magentothem_Ajaxcartsuper>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Magentothem_Ajaxcartsuper>
+    </modules>
+</config> 

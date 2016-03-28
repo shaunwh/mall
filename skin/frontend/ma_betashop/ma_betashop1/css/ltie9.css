@@ -1,0 +1,46 @@
+/* 
+* @Author: Administrator
+* @Date:   2015-10-15 17:23:53
+* @Last Modified by:   Administrator
+* @Last Modified time: 2015-10-16 10:56:22
+*/
+html{
+	height: 100%;
+	width: 100%
+}
+body{
+	background: #018DCA;
+	font-family: "微软雅黑";
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+img{
+	border: 0;
+}
+a{
+	text-decoration: underline;
+	color: #FFF
+}
+.explorer-remind{
+	width: 100%;
+	text-align: center;
+	color: #FFF;
+}
+.explorer-remind .para1{
+	font-size: 40px;
+}
+.explorer-box{
+	float: left;
+	width: 25%;
+	text-align: center;
+	margin-top:30px;
+}
+.footer{
+	position: absolute;
+	left: 0;
+	bottom: 20px;
+	width: 100%;
+	text-align: center;
+}

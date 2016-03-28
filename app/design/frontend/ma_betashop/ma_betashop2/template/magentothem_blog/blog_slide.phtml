@@ -1,0 +1,86 @@
+<?php
+$enabled_slide = Mage::getStoreConfig('blog/slide/enabled');
+if($enabled_slide){
+$numberrow = $this->getConfig('numberrow');
+$speed = $this->getConfig('speed');
+$auto = $this->getConfig('auto');
+$itemsDefault = $this->getConfig('itemsDefault');
+$itemsDesktop = $this->getConfig('itemsDesktop');
+$itemsDesktopSmall = $this->getConfig('itemsDesktopSmall');
+$itemsTablet = $this->getConfig('itemsTablet');
+$itemsMobile = $this->getConfig('itemsMobile');
+$show_image = $this->getConfig('showimage');
+$show_title = $this->getConfig('showtitle');
+$show_author = $this->getConfig('showauthor');
+$show_time = $this->getConfig('showtime');
+$show_shortcontent = $this->getConfig('showshortcontent');
+$showcomment = $this->getConfig('showcomment');
+$show_readmore = $this->getConfig('showreadmore');
+$next_back = $this->getConfig('next_back');
+$nav_ctrl = $this->getConfig('nav_ctrl');
+?>
+<?php if ($posts = $this->getRecent()):  $i = 0;?>
+	<div class="menu-recent">
+	<!--<div class="container">-->
+		<div class="blog-titles ma-title"><h2>Latest Post</h2></div>
+			<div class="row">
+				<ul class="owl">
+					<?php foreach ($posts as $post): ?>
+						<?php if($i % $numberrow == 0) echo '<li>'; ?>
+							<div class="item-inner">
+									<div class="blog-image">
+										<?php if($show_image): ?>
+											<?php if($post->getAddress()): ?><a href="<?php echo $post->getAddress(); ?>" ><?php endif; ?>
+											<?php echo '<img alt="" src="'.Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA). $post->getThumbnailimage().'"/>'; ?>
+											<?php if($post->getAddress()): ?></a><?php endif; ?>
+										<?php endif; ?>
+										<div class="date-time">
+											<?php if($show_time) echo '<span class="day-month">' .date("d M",$date).'</span>' .'<span class="year">' .date("Y") .'</span>'; ?>
+										</div>
+									</div>
+									<div class="blog-content">
+										<?php if($show_title): ?> <h3 class="blog-title"><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle() ?></a></h3> <?php endif; ?>
+										<?php $s = $post->getCreatedTime(); $date = strtotime($s); ?>
+										<?php if($show_shortcontent) echo '<p>' .strip_tags($this->getContentBlogSidebar($post->getShortContent(),180)) .'</p>';?>
+										<div class="time-conment">
+											
+											<div class="aut-com">
+												<?php if($show_author) echo '<span class="author"><i class="fa fa-edit"></i>By '.$post->getUser().'</span>'; 												?>
+												<?php if($showcomment) echo '<span class="comments"><i class="fa fa-comments-o"></i>'.$this->getcountcomment($post->getPostId()) .' comments </span>' ?>
+											</div>
+											<?php if($show_readmore): ?> <a class="readmore" href="<?php echo $post->getAddress(); ?>">Read more </a> <?php endif; ?>
+										</div>
+										
+									</div>
+							</div>
+						<?php 
+						$i++;
+						if($i % $numberrow == 0)echo '</li>';  ?>
+					<?php endforeach; ?>
+					<?php if($i % $numberrow != 0)echo '</li>'; ?>
+				</ul>
+			</div>
+		<!--</div>-->
+	</div>
+	 <script type="text/javascript">
+		$jq(document).ready(function(){
+			$jq(".menu-recent .owl").owlCarousel({
+				autoPlay : <?php if($auto) echo 'true'; else echo 'false'; ?>,
+				items : <?php if($itemsDefault) echo $itemsDefault; else echo '6'; ?>,
+				itemsDesktop : [1199,<?php if($itemsDesktop) echo $itemsDesktop; else echo '5'; ?>],
+				itemsDesktopSmall : [980,<?php if($itemsDesktopSmall) echo $itemsDesktopSmall; else echo '3'; ?>],
+				itemsTablet: [768,<?php if($itemsTablet) echo $itemsTablet; else echo '2'; ?>],
+				itemsMobile : [479,<?php if($itemsMobile) echo $itemsMobile; else echo '1'; ?>],
+				slideSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+				paginationSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+				rewindSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+				navigation : <?php if($next_back) echo 'true'; else echo 'false'; ?>,
+				stopOnHover : true,
+				pagination : <?php if($nav_ctrl) echo 'true'; else echo 'false'; ?>,
+				scrollPerPage:true,
+			});
+		});
+	</script>
+<?php endif;
+}
+?>

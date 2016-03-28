@@ -1,0 +1,104 @@
+<?php
+$_prozoom_enabled = Mage::getStoreConfig('prozoom/prozoom_config/enabled');
+$_thumbnail_qty = Mage::getStoreConfig('prozoom/prozoom_config/thumbnail_qty');
+$_zoom_w = Mage::getStoreConfig('prozoom/prozoom_config/zoom_w');
+$_zoom_h= Mage::getStoreConfig('prozoom/prozoom_config/zoom_h');
+$_thumbnail_w = Mage::getStoreConfig('prozoom/prozoom_config/thumbnail_w');
+$_thumbnail_h = Mage::getStoreConfig('prozoom/prozoom_config/thumbnail_h');
+$_scroll_qty = Mage::getStoreConfig('prozoom/prozoom_config/scroll_qty');
+$_auto = Mage::getStoreConfig('prozoom/prozoom_config/auto_scroll');
+?>
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+?>
+<p class="product-image">
+    <img id="image-main" src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($_zoom_w,$_zoom_h); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel()); ?>" title="<?php echo $this->htmlEscape($this->getImageLabel()); ?>" />
+</p>
+<?php if ( count($this->getGalleryImages()) > 0 ): ?>
+    <?php if($_prozoom_enabled == 1): ?>
+        <?php if( Mage::getStoreConfig('prozoom/prozoom_config/scroll_style')=='horizontal' ) { ?>
+            <div class="more-views ma-thumbnail-container">
+                <h2><?php echo $this->__('More Views') ?></h2>
+                <ul class="bxslider">
+                    <?php foreach ($this->getGalleryImages() as $_image): ?>
+                        <li>
+                            <a href="javascript:void(0);" class="thumb-link" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" data-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($_zoom_w, $_zoom_h); ?>">
+                                <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_thumbnail_w, $_thumbnail_h); ?>" width="<?php echo $_thumbnail_w ?>" height="<?php echo $_thumbnail_h ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    $jq('.ma-thumbnail-container .bxslider').bxSlider({
+                        auto: 0,
+                        slideWidth: <?php echo $_thumbnail_w ?>,
+                        slideMargin: 10,
+                        minSlides: 2,
+                        maxSlides: 4,
+                        moveSlides: 1,
+                        <?php if (count($this->getGalleryImages()) < 5 ) { ?>
+                        controls: false,
+                        <?php } ?>
+                        pager: false,
+                        randomStart: false,
+                        startSlide: 0,
+                        infiniteLoop: false,
+                        hideControlOnEnd: true
+                    });
+                    //]]>
+                </script>
+            </div>
+        <?php } else { ?>
+
+            <div class="more-views ma-more-img ma-thumbnail-vert visible-desktop">
+                <h2><?php echo $this->__('More Views') ?></h2>
+                <div class="ma-thumb-vert">
+                    <ul id="ma-thumb-vert-slider" class="jcarousel jcarousel-skin-tango thumb-vertscroller">
+                        <?php foreach ($this->getGalleryImages() as $_image): ?>
+                            <li>
+                                <a href="javascript:void(0);" class="thumb-link" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" data-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($_zoom_w, $_zoom_h); ?>">
+                                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_thumbnail_w, $_thumbnail_h); ?>" width="<?php echo $_thumbnail_w ?>" height="<?php echo $_thumbnail_h ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    $jq(document).ready(function(){
+                        $jq('#ma-thumb-vert-slider').jcarousel({
+                            auto: 0,
+                            vertical: true,
+                            wrap: 'circular',
+                            infiniteLoop: false,
+                            hideControlOnEnd: true,
+                            scroll: <?php echo $_scroll_qty ?>
+                        });
+                    });
+                    //]]>
+                </script>
+            </div>
+        <?php } ?>
+    <?php else: ?>
+        <div class="more-views ma-more-img">
+            <h2><?php echo $this->__('More Views') ?></h2>
+            <ul>
+                <?php foreach ($this->getGalleryImages() as $_image): ?>
+                    <li>
+                        <a href="javascript:void(0);" class="thumb-link" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" data-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize($_zoom_w, $_zoom_h); ?>">
+                            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($_thumbnail_w, $_thumbnail_h); ?>" width="<?php echo $_thumbnail_w ?>" height="<?php echo $_thumbnail_h ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" /></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+<script type="text/javascript">
+    $jq('#image-main').elevateZoom();
+    $jq('.thumb-link').click(function() {
+        $jq('.zoomContainer').remove();
+        var imgUrl = $jq(this).data('image');
+        $jq('#image-main').attr('src', imgUrl).elevateZoom();
+    });
+</script>

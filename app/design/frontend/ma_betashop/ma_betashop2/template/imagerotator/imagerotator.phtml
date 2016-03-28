@@ -1,0 +1,25 @@
+<div class="products">
+<article class="product">
+<figure>
+	<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+	
+		<div class="product-image">
+			<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+		</div>
+		<div class="product-image">
+			<?php 
+			$product = Mage::getModel('catalog/product')->load($_product->getId());
+			if ($product->getRotatorImage()) {
+				//$imageTooltipResize = $this->getResizedUrl($imagetTooltip,600,400);
+				$image = Mage::helper('catalog/image')->init($product, 'rotator_image')->resize(135, 135);
+			} else {
+				$image = Mage::helper('catalog/image')->init($_product, 'small_image')->resize(135, 135);
+			}
+			?>
+			<img src="<?php echo $image ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+		 </div>				
+	
+	</a>
+</figure>
+</article>
+</div>

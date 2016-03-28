@@ -1,0 +1,132 @@
+<?php 
+/******************************************************
+ * Website: http://www.plazathemes.com
+*******************************************************/
+?> 
+<?php if($this->getConfig('enabled')){ ?>	  <!-- start enable -->
+	<?php $cur_store = Mage::app()->getStore()->getId() ?>
+	<div class="ma-banner7-container">
+	        <div class="flexslider ma-nivoslider">
+        <div class="ma-loading"></div>
+		<div id="ma-inivoslider-banner7" class="slides">
+			
+				<?php
+					// Get data banner
+					$slide = $this->getDataBanner7();
+					$path = Mage::getBaseUrl('media');					
+					$qty_Item = $this->getConfig('qty_item');
+					/* Get max item & qty item */
+					if ($qty_Item > count($slide)) {
+						$qty_Item = count($slide);
+					}
+				?>
+				<?php
+					$i = 1;
+					foreach($slide as $s) {
+						if($i <= $qty_Item) {
+							//Get images slide show
+							$imag = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$s['image'];
+					?>
+					<?php if( $s['link'] ): ?>
+						<a href="<?php echo $s['link']?>" title="<?php echo $this->__('Read more') ?>">
+					<?php  endif; ?>
+					<img style="display: none;" src="<?php echo $imag;?>" alt="" title="#banner7-caption<?php echo $i; ?>"  />
+					<?php if( $s['link'] ): ?>
+						</a>
+					<?php  endif; ?>
+					<?php $i++; ?>
+				<?php
+                        }//end if
+                    } // end foreach
+				?>
+		</div>
+				<?php
+					$i = 1;
+					foreach($slide as $s) {
+						$imag2 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$s['image2'];
+						$imag3 = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$s['image3'];
+					?>
+					
+							<div id="banner7-caption<?php echo $i; ?>" class="banner7-caption nivo-html-caption nivo-caption">
+								<div class="timethai" style=" 
+									position:absolute;
+									top:0;
+									left:0;
+									background-color: rgba(38, 57, 64, 0.42);
+									height:5px;
+									-webkit-animation: myfirst <?php echo $this->getConfig('speed') ?>ms ease-in-out;
+									-moz-animation: myfirst <?php echo $this->getConfig('speed') ?>ms ease-in-out;
+									-ms-animation: myfirst <?php echo $this->getConfig('speed') ?>ms ease-in-out;
+									animation: myfirst <?php echo $this->getConfig('speed') ?>ms ease-in-out;
+								   
+								   ">
+							    </div>
+								<div class="banner7-content slider-<?php echo $i?> hidden-xs">
+									<div class="content-title">
+										<?php if($s['title']): ?><h1 class="title1"><?php echo $this->__($s['title']) ?></h1><?php endif; ?>
+										<?php if($s['title2']): ?><h2 class="title2" ><span><?php echo $this->__($s['title2']) ?></span></h2><?php endif; ?>
+										<?php if($s['description']): ?><div class="banner7-des">
+											<?php echo $this->__($s['description']) ?>
+										</div><?php endif; ?>
+										<?php if($s['title3']): ?><h3 class="title3"><span><?php echo $this->__($s['title3']) ?></h3></span><?php endif; ?>
+										<?php if( $s['link'] ) { ?>
+											<div class="banner7-readmore">
+												<a href="<?php echo $s['link']?>" title="<?php echo $this->__('View Collection') ?>"><?php echo $this->__('View Collection') ?></a>	
+											</div>
+										<?php } ?>
+										<?php if($s['image2']): ?><img class="img1" src="<?php echo $imag2;?>" alt="" /><?php endif; ?>
+										<?php if($s['image3']): ?><img class="img2" src="<?php echo $imag3;?>" alt="" /><?php endif; ?>
+									</div>
+								</div>	
+							</div>						
+				<?php
+					$i++;
+					}
+				?>
+		<script type="text/javascript">
+			 $jq(window).load(function() {
+				  $jq(document).off('mouseenter').on('mouseenter', '.pos-slideshow', function(e){
+				  $jq('.ma-banner7-container .timethai').addClass('pos_hover');
+			});
+
+			$jq(document).off('mouseleave').on('mouseleave', '.pos-slideshow', function(e){
+				$jq('.ma-banner7-container .timethai').removeClass('pos_hover');
+			});
+			});
+            $jq(window).load(function() {
+                $jq('#ma-inivoslider-banner7').nivoSlider({
+                    effect: '<?php echo $this->getConfig('animation') ?>',
+                    slices: 15,
+                    boxCols: 8,
+                    boxRows: 4,
+                    animSpeed: <?php echo $this->getConfig('interval') ?>,
+                    pauseTime: <?php echo $this->getConfig('speed') ?>,
+                    startSlide: 0,
+					<?php if (!$this->getConfig('nav_ctrl')) { ?>
+					controlNav: false,
+					<?php } ?>
+					<?php if (!$this->getConfig('next_back')) { ?>
+					directionNav: false,
+					<?php } ?>
+                    controlNavThumbs: false,
+                    pauseOnHover: true,
+                    manualAdvance: false,
+                    prevText: 'Prev',
+                    nextText: 'Next',
+                    afterLoad: function(){
+                        $jq('.ma-loading').css("display","none");
+                        //$jq('.banner7-title, .banner7-des, .banner7-readmore').css("left","100px") ;
+                        },     
+                    beforeChange: function(){ 
+                        //$jq('.banner7-title, .banner7-des').css("left","-2000px" );
+                        //$jq('.banner7-readmore').css("left","-2000px"); 
+                    }, 
+                    afterChange: function(){ 
+                        //$jq('.banner7-title, .banner7-des, .banner7-readmore').css("left","40px") 
+                    }
+                });
+            });
+		</script>
+	</div>
+	</div>
+<?php } ?> <!-- end enable -->

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <searchajax_adminhtml_searchajax_index>
+        <reference name="content">
+            <block type="searchajax/adminhtml_searchajax" name="searchajax" />
+        </reference>
+    </searchajax_adminhtml_searchajax_index>
+</layout>

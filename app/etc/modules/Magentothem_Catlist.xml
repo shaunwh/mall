@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magentothem_Catlist>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Magentothem_Catlist>
+    </modules>
+</config> 

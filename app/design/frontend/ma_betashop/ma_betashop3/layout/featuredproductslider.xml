@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+        <reference name="head">
+			<!-- <action method="addCss" ifconfig="featuredproductslider/featuredproductslider_config/enabled"><stylesheet>magentothem/css/owl.carousel.css</stylesheet></action>
+			<action method="addJs" ifconfig="featuredproductslider/featuredproductslider_config/enabled"><script>magentothem/ma.jq.slide.js</script></action>
+			<action method="addJs" ifconfig="featuredproductslider/featuredproductslider_config/enabled"><script>magentothem/owl.carousel.js</script></action>     --> 
+		</reference>
+        <reference name="content">
+            <!-- <block type="featuredproductslider/featuredproductslider" after="banner_static_center" name="featuredproductslider" template="magentothem/featuredproductslider/featuredproductslider.phtml" /> -->
+        </reference>
+    </cms_index_index>
+</layout> 

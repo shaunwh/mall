@@ -1,0 +1,24 @@
+<?php
+/**
+ * @var $this Magentothem_Ajaxlogin_Block_Login
+ */
+?>
+<div class="url-content" style="display: none">
+    <input type="hidden" id="use-redirect" value="<?php if($this->isUseRedirect()) :?>1<?php else: ?>0<?php endif; ?>" />
+    <input type="hidden" id="base-url" value="<?php echo $this->getUrl() ?>" />
+</div>
+<div id="ajax-login-block">
+</div>
+<div class="ajax-load-img">
+    <img alt="" src="<?php echo $this->getAjaxLoadImage() ?>" />
+</div>
+<div class="ajax-body-login">
+    <div class="account-login">
+        <div class="page-title">
+            <h1></h1>
+            <a href="javascript:void(0);" class="a-close-frm" onclick="closeLoginForm()"><span>Close</span></a>
+        </div>
+        <div class="ajax-content">
+        </div>
+    </div>
+</div>

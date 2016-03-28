@@ -1,0 +1,159 @@
+<?php if($this->getConfig('enabled')){ // start enable module?> 
+	<?php
+		function cut_string1($string,$number){
+			if(strlen($string) <= $number) {
+				return $string;
+			}
+			else {	
+				if(strpos($string," ",$number) > $number){
+					$new_space = strpos($string," ",$number);
+					$new_string = substr($string,0,$new_space)."..";
+					return $new_string;
+				}
+				$new_string = substr($string,0,$number)."..";
+				return $new_string;
+			}
+		}
+	?>
+	<?php $this->getProducts() ?>
+	<?php
+		$auto = $this->getConfig('auto');
+		$itemsDefault = $this->getConfig('itemsDefault');
+		$itemsDesktop = $this->getConfig('itemsDesktop');
+		$itemsDesktopSmall = $this->getConfig('itemsDesktopSmall');
+		$itemsTablet = $this->getConfig('itemsTablet');
+		$itemsMobile = $this->getConfig('itemsMobile');
+		$speed = $this->getConfig('speed');
+		$next_back = $this->getConfig('next_back');
+		$nav_ctrl = $this->getConfig('nav_ctrl');
+	?>
+	<?php $_productCollection=$this->getProductCollection() ?>
+	<div class="ma-last-products">  <!-- start mt products list -->
+		<?php if($this->getConfig('title')){?>
+			<div class="ma-last-product-title ma-title"><h2><?php echo $this->getConfig('title')?></h2></div>
+		<?php }?>
+		<?php if(!$_productCollection->count()): ?> <!-- start if exist product -->
+			<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+		<?php else: ?>
+			<div class="last-products">
+			    <?php $_collectionSize = $_productCollection->count() ?>
+				<?php
+					$rows = $this->getConfig('row_show');
+				?>
+				<?php 
+					if ( !$this->getConfig('width') ){
+						$w=135;
+					} else {
+						$w = $this->getConfig('width');
+					}
+					if( !$this->getConfig('height') ){
+						$h=135;
+					 }
+					else {
+						$h = $this->getConfig('height');
+					}
+				?>
+			        <ul class="owl">
+						 <?php $i=0; foreach ($_productCollection as $_product): ?>
+						<?php if($i % $rows == 0) echo "<li class='lastproductslider-item'>"; ?>
+							<div class="item-inner">
+							<div class="ma-box-content">
+								<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($w,$h); ?>" width="<?php echo $w?>" height="<?php echo $h?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" /></a>
+								<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+								<?php if( $this->getConfig('show_price') ): ?>
+									<div class="price-box">
+										<?php
+										$sym = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getSymbol(); 
+										$price = $_product->getPrice();
+										$specialprice = $_product->getFinalPrice();
+										if($price != $specialprice){
+										if($price != ''){
+										echo '<p class="old-price"><span class="price-label">';
+										echo $this->__('Regular Price'). ': </span>';
+										echo '<span class="price">'.$sym.''.number_format($price,2).'</span></p>';
+										}
+										if($specialprice != '')
+										{
+										echo '<p class="special-price">
+										<span class="price-label">Special Price</span>
+										<span class="price">'.$sym.''.number_format($specialprice,2).'</span>
+										</p> ';
+										} 
+										}else {
+										echo '<div class="price-boxs">
+										<span class="regular-price">
+										<span class="price">'.$sym.''.number_format($price,2).'</span>                                    
+										</span>    
+										</div>';    
+										}
+										?>
+									</div>
+								<?php endif; ?>
+								<?php if ( $this->getConfig('review') ): ?>
+									<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+								<?php endif; ?>
+								<div class="actions">
+									<?php if ($this->getConfig('addtocart')) { ?>
+										<?php if($_product->isSaleable()): ?>
+											<button type="button"  class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><?php echo $this->__('Add to Cart') ?></span></button>
+										<?php else: ?>
+											<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+										<?php endif; ?>
+									<?php }?>
+									<?php if( $this->getConfig('addtowishlist') || $this->getConfig('addtocompare')){?>
+										<ul class="add-to-links">
+											<?php if( $this->getConfig('addtowishlist')){?>
+											<?php if ($this->helper('wishlist')->isAllow()) : ?>
+												<li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>"  class="link-wishlist fa fa-heart"><em><?php echo $this->__('Add to Wishlist') ?></em></a></li>
+											<?php endif; ?>
+											<?php } ?>
+											<?php if( $this->getConfig('addtocompare') ){?>
+											<?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+												<li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare fa fa-refresh"><em><?php echo $this->__('Add to Compare') ?></em></a></li>
+											<?php endif; ?>
+											<?php }?>
+										</ul>
+									<?php }?>
+								</div>
+								<?php if( $this->getConfig('description')){?>
+								<div class="ma-desc">
+									<?php if(!$this->getConfig('maxlength')){?>
+										<?php echo nl2br($this->htmlEscape($_product->getShortDescription())) ?>
+									<?php } else {?>
+										<?php echo nl2br(cut_string1($this->htmlEscape($_product->getShortDescription()),$this->getConfig('maxlength'))) ?>			            
+									<?php }?>			                    
+								</div>
+								<?php }?>
+							</div>
+							</div>
+						<?php $i++;?>
+			            <?php if($i %$rows == 0) echo "</li>"; ?>                    
+					<?php endforeach; ?>
+						<?php if($i %$rows != 0) echo "</li>"; ?>
+			        </ul>
+		        <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>			
+			</div>		
+			<script type="text/javascript">
+				$jq(document).ready(function(){
+					$jq(".ma-last-products .owl").owlCarousel({
+						autoPlay : <?php if($auto) echo 'true'; else echo 'false'; ?>,
+						items : <?php if($itemsDefault) echo $itemsDefault; else echo '5'; ?>,
+						itemsDesktop : [1199,<?php if($itemsDesktop) echo $itemsDesktop; else echo '5'; ?>],
+						itemsDesktopSmall : [980,<?php if($itemsDesktopSmall) echo $itemsDesktopSmall; else echo '3'; ?>],
+						itemsTablet: [768,<?php if($itemsTablet) echo $itemsTablet; else echo '2'; ?>],
+						itemsMobile : [479,<?php if($itemsMobile) echo $itemsMobile; else echo '1'; ?>],
+						slideSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+						paginationSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+						rewindSpeed : <?php if($speed) echo $speed; else echo '500'; ?>,
+						navigation : <?php if($next_back) echo 'true'; else echo 'false'; ?>,
+						stopOnHover : true,
+						pagination : <?php if($nav_ctrl) echo 'true'; else echo 'false'; ?>,
+						scrollPerPage:true,
+					});
+				});
+			</script>
+		<?php endif; ?> <!-- end exist product -->
+	</div> <!-- end products list -->
+<?php } ?>
+
+

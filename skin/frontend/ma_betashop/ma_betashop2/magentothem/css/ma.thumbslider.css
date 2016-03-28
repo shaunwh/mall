@@ -1,0 +1,261 @@
+.ma-thumbnail-hor {
+	float:left;
+	width:267px;
+}
+.ma-thumbnail-slider-title {}
+.ma-thumbnail-slider-title h2 {
+	padding:5px;
+}
+.ma-thumbnail-slider {}
+.thumb-slider .jcarousel-container {
+    -moz-border-radius: 10px;
+    background: #fff;
+    border: 2px solid #000;
+}
+
+.thumb-slider .jcarousel-container-horizontal {
+    width: 1000px;
+    padding: 10px 0px;
+	padding-left:40px;
+	margin:0 auto;
+	margin-top:80px
+}
+
+.thumb-slider .jcarousel-container-vertical {
+    width: 75px;
+    height: 245px;
+    padding: 0px 0px;
+}
+
+.thumb-slider .jcarousel-clip-horizontal {
+    width:  960px;
+    height: 154px;
+}
+
+.thumb-slider .jcarousel-clip-vertical {
+    width:  240px;
+    height: 245px;
+}
+
+.thumb-slider .jcarousel-item {
+	float: left;
+    list-style: none outside none;
+	text-align:center;
+}
+
+.thumb-slider .jcarousel-item-horizontal {
+    margin-right: 0px;
+}
+.product-view .product-img-box .more-views li.jcarousel-item-horizontal {
+	margin: 0 0 0 7px;
+}
+.thumb-slider .jcarousel-item-vertical {
+    margin-bottom: 10px;
+}
+
+.thumb-slider .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+.thumb-slider .product-image {
+	display:inline-block;
+	margin:0 0 8px;
+}
+
+/**
+ *  Horizontal Buttons
+ */
+.ma-thumbnail-slider .jcarousel-next-horizontal {
+    position: absolute;
+    top: 20%;
+    right: -30px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(../images/next-horizontal.png) no-repeat 0 0;
+}
+
+.ma-thumbnail-slider .jcarousel-next-horizontal:hover {
+    background-position: -32px 0;
+}
+
+.ma-thumbnail-slider .jcarousel-next-horizontal:active {
+    background-position: -64px 0;
+}
+
+.ma-thumbnail-slider .jcarousel-next-disabled-horizontal,
+.ma-thumbnail-slider .jcarousel-next-disabled-horizontal:hover,
+.ma-thumbnail-slider .jcarousel-next-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+.ma-thumbnail-slider .jcarousel-prev-horizontal {
+    position: absolute;
+    top: 20%;
+    left: -30px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(../images/prev-horizontal.png) no-repeat 0 0;
+}
+
+.ma-thumbnail-slider .jcarousel-prev-horizontal:hover {
+    background-position: -32px 0;
+}
+
+.ma-thumbnail-slider .jcarousel-prev-horizontal:active {
+    background-position: -64px 0;
+}
+
+.ma-thumbnail-slider .jcarousel-prev-disabled-horizontal,
+.ma-thumbnail-slider .jcarousel-prev-disabled-horizontal:hover,
+.ma-thumbnail-slider .jcarousel-prev-disabled-horizontal:active {
+    cursor: default;
+    background-position: -96px 0;
+}
+
+
+/**
+ * This <div> element is wrapped by jCarousel around the list
+ * and has the classname "jcarousel-container".
+ */
+.ma-thumbnail-slider .jcarousel-container {
+    position: relative;
+}
+.ma-thumbnail-slider .jcarousel-clip {
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+.ma-thumbnail-slider .jcarousel-list {
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+/**
+ * The buttons are added dynamically by jCarousel before
+ * the <ul> list (inside the <div> described above) and
+ * have the classnames "jcarousel-next" and "jcarousel-prev".
+ */
+
+.ma-thumbnail-slider .jcarousel-next {
+    z-index: 3;
+    display: none;
+}
+.ma-thumbnail-slider .jcarousel-prev {
+    z-index: 3;
+    display: none;
+}
+
+.ma-thumbnail-vert {
+	float: left;
+}
+#ma-thumb-vert-slider {
+	height: 5555px !important;
+}
+
+.ma-thumbnail-vert  .jcarousel-container-vertical {
+    width: 62px;
+    padding: 35px 10px;
+}
+.ma-thumbnail-vert  .jcarousel-clip {
+    overflow: hidden;
+}
+.ma-thumbnail-vert  .jcarousel-clip-vertical {
+    width: 60px;
+    height: 267px;
+}
+.ma-thumbnail-vert  .jcarousel-item {
+    width: 60px;
+    height: 60px;
+    margin-left: 0 !important;
+}
+.ma-thumbnail-vert .product-image {
+	float: left;
+}
+.ma-thumbnail-vert .product-name  {
+	margin: 0 0 5px;
+}
+
+.ma-thumbnail-vert  .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+.ma-thumbnail-vert .block-content li.item {
+	padding: 0;
+}
+
+/**
+ *  Vertical Buttons
+ */
+.ma-thumbnail-vert .jcarousel-next-vertical, 
+.ma-thumbnail-vert  .jcarousel-prev-vertical {
+    background: transparent url(../images/prev-vertical.png) no-repeat 0 0;
+	width: 30px;
+	height: 32px;
+	position: absolute;
+	left: 32%;
+	cursor: pointer;
+}
+.ma-thumbnail-vert .jcarousel-next-vertical {
+    background: transparent url(../images/next-vertical.png) no-repeat 0 0;
+	width: 30px;
+	height: 32px;
+	position: absolute;
+	left: 30%;
+	cursor: pointer;
+}
+
+.ma-thumbnail-vert  .jcarousel-next-vertical:hover,
+.ma-thumbnail-vert  .jcarousel-next-vertical:focus {
+    background-position: 0 -32px;
+}
+.ma-thumbnail-vert  .jcarousel-prev-vertical {
+    top: 5px;
+}
+.ma-thumbnail-vert  .jcarousel-prev-vertical:hover,
+.ma-thumbnail-vert  .jcarousel-prev-vertical:focus {
+    background-position: 0 -32px;
+}
+
+.product-view .product-img-box .more-views li a {
+    float: left;
+    height: auto;
+    width: auto;
+}
+
+//**
+ * BxSlider v4.0 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2012
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+
+
+/** RESET AND LAYOUT
+===================================*/
+
+.ma-thumbnail-container   .bx-wrapper {
+	position: relative;
+	margin: 0 auto 60px;
+	padding: 0;
+	*zoom: 1;
+}
+
+.ma-thumbnail-container   .bx-wrapper img {
+	max-width: 100%;
+	display: block;
+}
+

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <installtemplate_adminhtml_installtemplate_index>
+        <reference name="content">
+            <block type="installtemplate/adminhtml_installtemplate" name="installtemplate" />
+        </reference>
+    </installtemplate_adminhtml_installtemplate_index>
+</layout>

@@ -1,0 +1,79 @@
+<?php
+/* Count for timer calculation declared here */
+$count = 1;
+$_product = $this->getProduct();
+$toDate = $_product->getSpecialTODate();
+$fromDate = $_product->getSpecialFromDate();
+
+/* Admin Controllers for timer are declared here */
+$timer_active = Mage::getStoreConfig('timer/general/activate_magentothem_timer');
+$timer_head_active = Mage::getStoreConfig('timer/general/activate_magentothem_heading');
+$timer_desc_active = Mage::getStoreConfig('timer/general/activate_magentothem_description');
+$desc_color = Mage::getStoreConfig('timer/magentothem_timer_color/description');
+$timer_color = Mage::getStoreConfig('timer/magentothem_timer_color/text');
+$head_color = Mage::getStoreConfig('timer/magentothem_timer_color/heading_text_color');
+$timer_head = Mage::getStoreConfig('timer/general/heading');
+?>
+
+<!--Condition for Timer Controllers goes here-->
+<?php if ($timer_active == 1) : ?>
+<?php if (($_product->getPrice() > $_product->getSpecialPrice() || $_product->getTypeID() == 'bundle') && $_product->getTimershow() == 1) : ?>
+<?php if ($_product->getSpecialPrice() != 0 || $_product->getSpecialPrice() != "") : ?>
+<?php if ($timer_head_active == 'showall' || $timer_head_active == 'viewpage' && $timer_head_active != 'hideall' && $timer_head != '') : ?>
+                        <div id="heading<?php echo $count; ?>" style="color:#<?php echo $head_color; ?>; font-size: 18px; font-weight:bold;padding-top:15px;clear: both;"><?php echo $timer_head ?></div>
+<?php endif; ?>
+                        <div id="countbox_<?php echo $count; ?>" class="timer-view"></div>
+<?php if ($timer_desc_active == 'showall' || $timer_desc_active == 'viewpage' && $timer_desc_active != 'hideall') : ?>
+                        <div class='clear'></div><div class='timerdate' id="caption<?php echo $count; ?>"><span class='hour' style='margin:1px 23px 0 0px'><?php echo $this->__('Days') ?></span><span class='hour' style='margin:1px 19px 0 15px'><?php echo $this->__('Hours') ?></span><span class='min'  style='margin:1px 20px 0 7px'><?php echo $this->__('Minutes') ?></span><span class='sec' style='margin:1px 0 0 2px'><?php echo $this->__('Seconds') ?></span></div>
+						<?php
+						if($_product->getTypeID() == 'bundle')
+						{
+							echo '<br/><h1 style="color:red">Discount up to '.(100 - $_product->getSpecialPrice()*1).'% </h1>';
+						}
+						?>
+<?php endif;endif;endif; ?>
+
+<?php if (($_product->getPrice() > $_product->getSpecialPrice() || $_product->getTypeID() == 'bundle') && $_product->getTimershow() == 1) : ?>
+<?php if ($_product->getSpecialPrice() != 0 || $_product->getSpecialPrice() != "") : ?>
+		<?php $_current_timer = time(); ?>
+        <script type="text/javascript">
+            var dthen<?php echo $count; ?> = new Date("<?php echo Date("m/d/y", strtotime($toDate)).' 11:59:00 PM'; ?>");
+            start = "<?php echo Date("m/d/y h:i:s A", $_current_timer); ?>";
+            start_date = Date.parse(start);
+            var dnow<?php echo $count; ?> = new Date(start_date);
+            if(CountStepper>0)
+                ddiff= new Date((dnow<?php echo $count; ?>)-(dthen<?php echo $count; ?>));
+            else
+                ddiff = new Date((dthen<?php echo $count; ?>)-(dnow<?php echo $count; ?>));
+            //gsecs<?php echo $count; ?> = Math.floor(ddiff.valueOf()/1000);
+			<?php if(strtotime($fromDate) <= $_current_timer){ ?>
+				gsecs<?php echo $count; ?> = Math.floor(ddiff.valueOf()/1000);
+			<?php }else{ ?>
+				gsecs<?php echo $count; ?> = -1;
+			<?php } ?>
+
+            var iid<?php echo $count; ?> = "countbox_<?php echo $count; ?>";
+            CountBack(gsecs<?php echo $count; ?>,"countbox_"+j, j);
+            j++;
+        </script>
+<?php $count = $count + 1; ?>
+<?php endif;endif;endif; ?>
+
+<!--Dynamic style changes goes here-->
+<style>
+    .timer-view{float: left;width: 100%;padding:0;color: #<?php echo $timer_color; ?>;font-size: 40px; font-family: arial;font-weight: bold;}
+    .timerdate{float: left;width: 100%;padding:0 0 15px 10px;color: #<?php echo $desc_color; ?>;font-size: 13px;}
+</style>
+
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php if($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if(!$_product->isGrouped()): ?>
+        <label for="qty"><?php echo $this->__('Qty:') ?></label>
+        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+        <?php endif; ?>
+        <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<?php endif; ?>

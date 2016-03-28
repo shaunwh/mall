@@ -1,0 +1,36 @@
+<div class="catlist">
+	<h2 class="title ma-title"><?php echo $this->getListCfg('title')?></h2>
+	 <div class="row">
+	<?php
+
+	$catListTop = $this->getCatListTop();
+	
+	$i = 0;
+	$last = count($catListTop);
+	foreach ($catListTop as $catTop) {
+		if($i < $last) echo '<div class="catgrid col-md-3 col-xs-12">';
+		else echo '<div class="catgrid last col-md-3 col-xs-12">';
+
+	    	echo '<div class="catlist_level_top">
+						<a href="' . Mage::getUrl($catTop->getUrlPath()). '"><h3>' 
+							.$catTop->getName() .'</h3>'
+		                    .'<img src="'.$this->getImage($catTop).'" alt="'.$catTop->getName().'" />
+		                </a>'
+		                .'</div>';
+						
+	   
+	    $CatList = $this->getCatByPath($catTop->getEntityId(), $catTop->getPath());
+	    
+	    $i = 0;
+	    echo '<ul class="subcat">';
+	    foreach ($CatList as $cat) {
+	      if($i >= $this->getListCfg('number_items')) break;
+	        echo '<li><a href="' . Mage::getUrl($cat->getUrlPath()). '">'.$cat->getName().'</a></li>';
+	        $i++;
+	    }
+	    echo '</ul></div>';
+	    $i++; // not trung voi $i o tren
+	}
+	?>
+	</div>
+</div>

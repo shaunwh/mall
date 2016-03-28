@@ -1,0 +1,128 @@
+<?php $_categories = Mage::helper('catalog/category')->getStoreCategories() ?>
+<?php if(count($_categories)): 
+	$item_show = Mage::getStoreConfig('vmegamenu/general/item_show');
+    ?>
+<div class="navleft-container visible-lg visible-md">
+    <div id="pt_vmegamenu" class="pt_vmegamenu">
+        <div class="category-vmega-menu"><i class="fa fa-bars"></i><?php echo $this->__('Category')?></div>
+		<div class="category-vmega_toggle">
+        <?php
+        $showhome = Mage::getStoreConfig('vmegamenu/general/showhome');
+        $active = '';
+        if(Mage::getSingleton('cms/page')->getIdentifier() == 'home'  && Mage::app()->getFrontController()->getRequest()->getRouteName() == 'cms') :
+            $active = ' act';
+        endif; 
+        if($showhome){
+            $id     = "_home";
+            $html[] = '<div id="pt_menu' . $id . '" class="pt_menu' . $active . '" >';
+            $html[] = '<div class="parentMenu">';
+            $html[] = '<a href="'.Mage::helper('core/url')->getHomeUrl().'">';
+            $html[] = '<span>Home</span>';
+            $html[] = '</a>';
+            $html[] = '</div>';
+            $html[] = '<div class="wrap-popup"><div id="popup' . $id . '" class="popup" >';
+            $html[] = '</div>';
+            $html[] = '</div>';
+            $html[] = '</div>';
+            $html = implode("\n", $html);
+            echo $html;
+        }
+	$n = 0;
+	foreach ($_categories as $_category):
+	$n++;
+	endforeach;
+	//echo $n;
+	
+	$i=1;
+	$total = count($_categories);
+	
+        foreach ($_categories as $_category):
+	    $class='';
+	    if($i==1) $class="first";
+	    else if($i==$n) $class="last";
+	    echo $this->drawCustomMenuItem($_category,0, false, $class,$i);
+	    $i++;
+        endforeach ?>
+        <?php if($n > $item_show): ?>
+			<div class="more-wrap active-i pt_menu">
+				<div class="parentMenu noSubMenu">
+					<span class="more-view"><i class="fa fa-plus"></i>More Categories</span>
+				</div>
+			</div>
+		<?php endIf; ?>
+        <?php
+        //$collection = Mage::getModel('cms/block')->getCollection()
+        //            ->addFieldToFilter('identifier', array('like'=>'pt_item_menu'.'%'))
+        //            ->addFieldToFilter('is_active', 1);
+        //foreach($collection as $key => $value){
+        //    $blockId = $value->getIdentifier();
+        //    $blockHtml = $this->getLayout()->createBlock('cms/block')->setBlockId($blockId)->toHtml();
+        //    if ($blockHtml) echo $this->drawCustomMenuBlock($blockId);
+        //}
+        
+        /*menu links*/
+        //$blockLinkId = 'pt_menu_links';
+        //$blockLinkHtml = $this->getLayout()->createBlock('cms/block')->setBlockId($blockLinkId)->toHtml();
+        //if ($blockLinkHtml){
+        //    $id     = "_link";
+        //    $htmlLink[] = '<div id="pt_menu' . $id . '" class="pt_menu" >';
+        //    $htmlLink[] = '<div class="parentMenu">';
+        //    $htmlLink[] = $blockLinkHtml;
+        //    $htmlLink[] = '</div>';
+        //    $htmlLink[] = '</div>';
+        //    $htmlLink = implode("\n", $htmlLink);
+        //    echo $htmlLink;
+        //}
+        ?>
+        
+        <div class="clearBoth"></div>
+		</div>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+var VMEGAMENU_POPUP_EFFECT = <?php echo (int)Mage::getStoreConfig('vmegamenu/popup/effect')?>;
+
+
+$jq(document).ready(function(){
+    $jq("#pt_menu_link ul li").each(function(){
+        var url = document.URL;
+        $jq("#pt_menu_link ul li a").removeClass("act");
+        $jq('#pt_menu_link ul li a[href="'+url+'"]').addClass('act');
+    }); 
+        
+    $jq('.pt_menu').hover(function(){
+        if(VMEGAMENU_POPUP_EFFECT == 0) $jq(this).find('.popup').stop(true,true).slideDown('slow');
+        if(VMEGAMENU_POPUP_EFFECT == 1) $jq(this).find('.popup').stop(true,true).fadeIn('slow');
+        if(VMEGAMENU_POPUP_EFFECT == 2) $jq(this).find('.popup').stop(true,true).show('slow');
+    },function(){
+        if(VMEGAMENU_POPUP_EFFECT == 0) $jq(this).find('.popup').stop(true,true).slideUp('fast');
+        if(VMEGAMENU_POPUP_EFFECT == 1) $jq(this).find('.popup').stop(true,true).fadeOut('fast');
+        if(VMEGAMENU_POPUP_EFFECT == 2) $jq(this).find('.popup').stop(true,true).hide('fast');
+    })
+});
+//]]>
+</script>
+
+<?php endif ?>
+<script type="text/javascript">
+	//<![CDATA[
+		$jq(document).ready(function(){
+			
+			$jq('#pt_vmegamenu .category-vmega_toggle .more-wrap').click(function(){
+				$jq('#pt_vmegamenu .category-vmega_toggle .extra_menu').slideToggle();
+				$jq(".extra_menu").css("overflow","visible");
+				if($jq("#pt_vmegamenu .category-vmega_toggle .more-view").hasClass('open'))
+				{
+					$jq("#pt_vmegamenu .category-vmega_toggle .more-view").removeClass('open');
+					$jq("#pt_vmegamenu .category-vmega_toggle .more-view").html('<i class="fa fa-plus"></i>More Categories');
+				}
+				else
+				{
+					$jq("#pt_vmegamenu .category-vmega_toggle .more-view").addClass('open');
+					$jq("#pt_vmegamenu .category-vmega_toggle .more-view").html('<i class="fa fa-minus"></i>Close Menu');
+				}
+			});
+		})
+		//]]>
+</script>

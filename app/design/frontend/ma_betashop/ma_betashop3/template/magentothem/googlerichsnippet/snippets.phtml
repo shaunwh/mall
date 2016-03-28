@@ -1,0 +1,39 @@
+<?php /* @var $this Magentothem_Googlerichsnippet_Block_Snippet */ ?>
+<?php $current_product = Mage::registry('current_product'); ?>
+<?php if($this->isEnableModule()): ?>
+    <?php if($current_product): ?>
+        <div id="gg-snippet-contain" itemscope="" itemtype="http://schema.org/Product">
+            <p itemprop="name"><?php echo $current_product->getName() ?></p>
+
+            <?php if($this->isEnablePrice()): ?>
+                <?php $currencyCode = Mage::app()->getStore()->getCurrentCurrencyCode(); ?>
+                <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                    <p itemprop="priceCurrency"><?php echo $currencyCode ?></p>
+                    <p itemprop="price"><?php echo Mage::helper('core')->currency($current_product->getPrice(), true, false) ?></p>
+                    <?php if($current_product->isSaleable()): ?>
+                        <link itemprop="availability" href="http://schema.org/InStock"/>
+                    <?php else: ?>
+                        <link itemprop="availability" href="http://schema.org/OutOfStock"/>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if($this->isEnableRating()): ?>
+                <?php $summaryData = $this->getReviewSummary($current_product->getId()); ?>
+                <?php if($summaryData): ?>
+                    <?php $ratePercent = (int) $summaryData->getData('rating_summary'); ?>
+                    <?php $rateValue = $ratePercent * 5 / 100; ?>
+                    <?php $reviewCount = $summaryData->getData('reviews_count'); ?>
+                    <div itemprop="aggregaterating" itemscope="" itemtype="http://schema.org/AggregateRating">
+                        <p itemprop="ratingValue"><?php echo $rateValue ?></p>
+                        <p itemprop="reviewcount"><?php echo $reviewCount ?></p>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById("gg-snippet-contain").style.display="none";
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

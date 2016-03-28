@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<ma_sahara_food4>
+    <blocks>
+       
+        <block>
+            <title>Footer Link payment</title>
+            <identifier>footer_payment</identifier>
+            <content>
+                    <![CDATA[
+						<ul class="payment">
+						<li><a href="#"><img alt="" src="{{media url="wysiwyg/payment_1.png"}}" /></a></li>
+						</ul>
+					]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+
+       
+        <block>
+            <title>Footer Static</title>
+            <identifier>footer_static</identifier>
+            <content>
+                <![CDATA[
+					<div class="footer-static-top">
+						<div class="row">
+						<div class="f-col f-col-1 col-sm-6 col-md-3 col-sms-6 col-smb-12">
+						<div class="footer-static-title">
+						<h3>About Us</h3>
+						</div>
+						<div class="footer-static-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.<br /> Lorem ipsum dolor sit amet, consectetuer adipiscing elit</div>
+						</div>
+						<div class="f-col f-col-2 col-sm-6 col-md-3 col-sms-6 col-smb-12">
+						<div class="footer-static-title">
+						<h3>Lastest news</h3>
+						</div>
+						<div class="footer-static-content">{{block type="core/template" after="-" name="lastesttweet" template="magentothem/lastesttweet/lastesttweet.phtml" }}</div>
+						</div>
+						<div class="f-col f-col-3 col-sm-6 col-md-3 col-sms-6 col-smb-12">
+						<div class="footer-static-title">
+						<h3>Contact us</h3>
+						</div>
+						<div class="footer-static-content">
+						<p class="adress"><em class="fa fa-map-marker">&nbsp;</em><span class="ft-content">123 Main Street, <span>Anytown,CA 12345 USA.</span></span></p>
+						<p class="phone"><em class="fa fa-phone">&nbsp;</em><span class="ft-content">(400) 123 456 789<span>(800) 123 456 789</span></span></p>
+						<p class="email"><em class="fa fa-envelope">&nbsp;</em><span class="ft-content">demo@plazathemes.com</span></p>
+						</div>
+						</div>
+						<div class="f-col f-col-4 col-sm-6 col-md-3 col-sms-6 col-smb-12">
+						<div class="footer-static-title">
+						<h3>Follow us</h3>
+						</div>
+						<div class="footer-static-content">
+						<ul class="link-follow">
+						<li class="first"><a class="twitter fa fa-twitter" href="https://twitter.com/plazathemes"><span>twitter</span></a></li>
+						<li><a class="google fa fa-google-plus" href="#"><span>google </span></a></li>
+						<li><a class="facebook fa fa-facebook" href="https://www.facebook.com/plazathemes"><span>facebook</span></a></li>
+						<li><a class="youtube fa fa-youtube" href="https://www.youtube.com/user/plazathemes"><span>youtube </span></a></li>
+						</ul>
+						</div>
+						</div>
+						</div>
+					</div>
+                ]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+
+		<block>
+            <title>Banner Left</title>
+            <identifier>banner_left</identifier>
+            <content>
+                   <![CDATA[
+						<div class="hidden-xs banner-left"><a href="#"><img alt="" src="{{media url="wysiwyg/banner-left.jpg"}}" /></a></div>
+					]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Banner Right</title>
+            <identifier>banner_right</identifier>
+            <content>
+                   <![CDATA[
+						<div class="hidden-xs banner-left"><a href="#"><img alt="" src="{{media url="wysiwyg/banner-left.jpg"}}" /></a></div>
+					]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Ma Block Static 1</title>
+            <identifier>ma_block_static_1</identifier>
+            <content>
+                   <![CDATA[
+					<div class="ma-block-static-1">
+					<div class="row">
+					<div class="col col1 col-md-6 col-sm-6 col-sms-12 col-smb-12"><a href="{{store direct_url="footwear.html"}}"><img alt="" src="{{media url="wysiwyg/banner11.jpg"}}" /></a></div>
+					<div class="col col2 col-md-6 col-sm-6 col-sms-12 col-smb-12"><a href="{{store direct_url="footwear.html"}}"><img alt="" src="{{media url="wysiwyg/banner12.jpg"}}" /></a></div>
+					</div>
+					</div>
+					]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Contact Us</title>
+            <identifier>contact_us</identifier>
+            <content>
+                   <![CDATA[
+						<div class="contact-us"><iframe style="border: 0;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6305.678625317825!2d-122.39957047637722!3d37.793805380191266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858063d63a0215%3A0xcba0af2dfe02048f!2s101+California+Street%2C+San+Francisco%2C+CA+94111%2C+Hoa+K%E1%BB%B3!5e0!3m2!1svi!2s!4v1419099932976" height="350" width="100%"></iframe></div>
+					]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Footer Static Bottom</title>
+            <identifier>footer_static_bottom</identifier>
+            <content>
+                   <![CDATA[
+						<div class="footer-static-top">
+						<div class="row">
+						<div class="f-col f-col-1 col-sm-6 col-md-3 col-sms-6 col-smb-12">
+						<div class="footer-static-title">
+						<h3>MY ACCOUNT</h3>
+						</div>
+						<div class="footer-static-content">
+						<ul>
+						<li class="first"><a href="{{store direct_url="customer/account"}}">My Account</a></li>
+						<li><a href="{{store direct_url="customer/account/login"}}">Login</a></li>
+						<li><a href="{{store direct_url="checkout/cart"}}">My Cart</a></li>
+						<li><a href="{{store direct_url="catalog/seo_sitemap/category"}}">Wishlist</a></li>
+						<li class="last"><a href="{{store direct_url="wishlist/index/index"}}">Checkout</a></li>
+						</ul>
+						</div>
+						</div>
+						<div class="f-col f-col-2 col-sm-6 col-md-3 col-sms-6 col-smb-12">
+						<div class="footer-static-title">
+						<h3>Information</h3>
+						</div>
+						<div class="footer-static-content">
+						<ul>
+						<li class="first"><a href="{{store direct_url="catalog/seo_sitemap/category"}}">Sitemap</a></li>
+						<li><a href="{{store direct_url="privacy-policy-cookie-restriction-mode"}}">Privacy Policy</a></li>
+						<li><a href="{{store direct_url="customer/account/index"}}">Your Account</a></li>
+						<li><a href="{{store direct_url="catalogsearch/advanced"}}">Advanced Search</a></li>
+						<li class="last"><a href="{{store direct_url="contacts"}}">Contact Us</a></li>
+						</ul>
+						</div>
+						</div>
+						<div class="f-col f-col-3 col-sm-6 col-md-3 col-sms-6 col-smb-12">
+						<div class="footer-static-title">
+						<h3>Extras</h3>
+						</div>
+						<div class="footer-static-content">
+						<ul>
+						<li class="first"><a href="#">Orders &amp; Returns</a></li>
+						<li><a href="#">Search Terms</a></li>
+						<li><a href="#">Affiliates</a></li>
+						<li><a href="{{store direct_url="catalogsearch/advanced"}}">Advanced Search</a></li>
+						<li class="last"><a href="#">Group Sales</a></li>
+						</ul>
+						</div>
+						</div>
+						<div class="f-col f-col-4 col-sm-6 col-md-3 col-sms-6 col-smb-12">
+						<div class="footer-static-title">
+						<h3>opening time</h3>
+						</div>
+						<div class="footer-static-content">
+						<ul>
+						<li class="first">Monday - Friday <span>9:00 - 22:00</span></li>
+						<li>Saturday <span>10:00 - 24:00</span></li>
+						<li>Sunday <span>12:00 - 24:00</span></li>
+						</ul>
+						</div>
+						</div>
+						</div>
+						</div>
+						]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+
+		
+		<block>
+            <title>Contact Us</title>
+            <identifier>pt_menu_links</identifier>
+            <content>
+			   <![CDATA[
+					<ul>
+						<li><a href="http://www.plazathemes.com/">View all themes</a></li>
+					</ul>
+				]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+
+		<block>
+            <title>Block Contact</title>
+            <identifier>block_contact</identifier>
+            <content>
+			   <![CDATA[
+					<div class="footer-static-content">
+						<p class="adress"><em class="fa fa-map-marker">&nbsp;</em><span class="ft-content">123 Main Street, <span>Anytown,CA 12345 USA.</span></span></p>
+						<p class="phone"><em class="fa fa-phone">&nbsp;</em><span class="ft-content">(400) 123 456 789<span>(800) 123 456 789</span></span></p>
+						<p class="email"><em class="fa fa-envelope">&nbsp;</em><span class="ft-content"> sub@plazathemes.com</span></p>
+					</div>
+				]]>
+            </content>
+            <is_active>1</is_active>
+        </block>		
+		<block>
+            <title>Social Top</title>
+            <identifier>social_top</identifier>
+            <content>
+			   <![CDATA[
+					<ul class="social-header">
+					<li class="first"><a class="twitter fa fa-twitter" href="https://twitter.com/plazathemes">&nbsp;</a></li>
+					<li><a class="google fa fa-google-plus" href="#">&nbsp;</a></li>
+					<li><a class="facebook fa fa-facebook" href="https://www.facebook.com/plazathemes">&nbsp;</a></li>
+					<li><a class="youtube fa fa-youtube" href="https://www.youtube.com/user/plazathemes">&nbsp;</a></li>
+					</ul>
+				]]>
+            </content>
+            <is_active>1</is_active>
+        </block>	
+		
+		<block>
+            <title>Ma Block Static 2</title>
+            <identifier>ma_block_static_2</identifier>
+            <content>
+			   <![CDATA[
+					<div class="ma-block-static-2">
+					<div class="row">
+					<div class="col col1 col-md-6 col-sm-6 col-sms-12 col-smb-12"><a href="{{store direct_url="footwear.html"}}"><img alt="" src="{{media url="wysiwyg/banner13.jpg"}}" /></a></div>
+					<div class="col col2 col-md-6 col-sm-6 col-sms-12 col-smb-12"><a href="{{store direct_url="footwear.html"}}"><img alt="" src="{{media url="wysiwyg/banner14.jpg"}}" /></a></div>
+					<a href="{{store direct_url="footwear.html"}}"><img alt="" src="{{media url="wysiwyg/banner15.jpg"}}" /></a></div>
+					</div>
+				]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+		
+		<block>
+            <title>Block Top Footer</title>
+            <identifier>block_top_footer</identifier>
+            <content>
+			   <![CDATA[
+					<div class="block-footer">
+					<div class="row">
+					<div class="col-md-3 col-xs-12"><a href="{{store direct_url="footwear.html"}}"><img alt="" src="{{media url="wysiwyg/banner16.jpg"}}" /></a></div>
+					<div class="col-md-6 col-xs-12">{{block type="newsletter/subscribe" template="newsletter/subscribe.phtml"}}</div>
+					<div class="col-md-3 col-xs-12"><a href="{{store direct_url="footwear.html"}}"><img alt="" src="{{media url="wysiwyg/banner17.jpg"}}" /></a></div>
+					</div>
+					</div>
+				]]>
+            </content>
+            <is_active>1</is_active>
+        </block>
+	
+    </blocks>
+</ma_sahara_food4>
+

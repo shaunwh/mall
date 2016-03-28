@@ -1,0 +1,10 @@
+<?php if($this->getConfig('enabled')) {
+	 $array = array('random', 'sliceDown', 'sliceDownLeft', 'sliceUp', 'sliceUpLeft', 'sliceUpDown', 'sliceUpDownLeft', 'fold', 'slideInRight', 'slideInLeft', 'boxRandom', 'boxRain', 'boxRainReverse', 'boxRainGrow', 'boxRainGrowReverse'); 
+	$style = $this->getConfig('animation');
+	if (in_array($style, $array) ) {
+		echo $this->getLayout()->createBlock('banner7/banner7')->setTemplate('magentothem/banner7/style2.phtml')->toHtml();
+	} else {
+		echo $this->getLayout()->createBlock('banner7/banner7')->setTemplate('magentothem/banner7/style1.phtml')->toHtml();
+	}
+ }
+?>

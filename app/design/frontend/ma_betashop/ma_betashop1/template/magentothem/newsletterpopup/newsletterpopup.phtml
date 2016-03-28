@@ -1,0 +1,88 @@
+<?php if(Mage::getStoreConfig('newsletterpopup/general/enabled') == 1){ ?>
+<script type="text/javascript">
+	function setCookie(cname,cvalue,exdays)
+	{
+	var d = new Date();
+	d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	var expires = "expires="+d.toGMTString();
+	document.cookie = cname+"="+cvalue+"; "+expires;
+	}
+
+	function getCookie(cname)
+	{
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i < ca.length; i++) 
+	  {
+	  //var c = ca[i].trim();
+	  var c = ca[i];
+	  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	  }
+	return "";
+	}
+	 $jq(document).ready(function() {
+		if(getCookie("shownewsletter") != 1){
+			$jq('#newsletter_pop_up').bPopup({
+				position: ['auto', <?php if(Mage::getStoreConfig('newsletterpopup/general/top') != '') echo Mage::getStoreConfig('newsletterpopup/general/top'); else echo '120'; ?>],
+				easing: 'easeOutBack', //uses jQuery easing plugin
+				speed: <?php if(Mage::getStoreConfig('newsletterpopup/general/speed') != '') echo Mage::getStoreConfig('newsletterpopup/general/speed'); else echo '450' ?>,
+				transition: 'slideDown',
+				// onClose: function() { setCookie("shownewsletter",'1',<?php if(Mage::getStoreConfig('newsletterpopup/general/cookietimeout')!='') echo Mage::getStoreConfig('newsletterpopup/general/cookietimeout');else echo '1' ?>); 
+				// }
+			});
+			}
+			$jq( "#newsletter_pop_up form" ).submit(function( event ) {
+				var email = $jq('#newsletter_subscribe').val();
+				var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+				if (testEmail.test(email)){
+					setCookie("shownewsletter",'1',1);
+					return true;
+				}
+				else{
+					$jq('#newsletter_subscribe').addClass('validation-failed');
+					$jq('#advice-required-entry-newsletter').show();
+					return false;							
+				}
+			});
+			
+			$jq('#newsletter_popup_dont_show_again').on('change', function(){
+				if(getCookie("shownewsletter") != 1){   
+					setCookie("shownewsletter",'1',<?php if(Mage::getStoreConfig('newsletterpopup/general/cookietimeout')!='') echo Mage::getStoreConfig('newsletterpopup/general/cookietimeout');else echo '1' ?>)
+				}else{
+					setCookie("shownewsletter",'0',<?php if(Mage::getStoreConfig('newsletterpopup/general/cookietimeout')!='') echo Mage::getStoreConfig('newsletterpopup/general/cookietimeout');else echo '1' ?>)
+				}
+			}); 
+	 });
+</script>
+<!-- Element to pop up -->
+<div id="newsletter_pop_up" style="background:url(<?php if(Mage::getStoreConfig('newsletterpopup/general/background') != '') echo Mage::getBaseUrl('media').'theme/'.Mage::getStoreConfig('newsletterpopup/general/background'); else echo $this->getSkinUrl('magentothem/images/popup_newsletter_bg.jpg'); ?>);<?php if(Mage::getStoreConfig('newsletterpopup/general/width') != '') echo 'width:'.Mage::getStoreConfig('newsletterpopup/general/width').'px;'; ?><?php if(Mage::getStoreConfig('newsletterpopup/general/height') != '') echo 'height:'.Mage::getStoreConfig('newsletterpopup/general/height').'px'; ?>">
+	<span class="button b-close"><span>X</span></span>
+	<div class="subscribe">
+		<div class="title_subscribe">
+			<h1><?php if(Mage::getStoreConfig('newsletterpopup/general/title')) echo Mage::getStoreConfig('newsletterpopup/general/title'); else echo 'Newsletter'; ?></h1>
+		</div>
+		<form action="<?php echo $this->getUrl('newsletter/subscriber/new') ?>" method="post" id="newsletter-validate">
+			<div class="content_subscribe">
+				<div class="form-subscribe-header">
+					<label for="newsletter"><?php if(Mage::getStoreConfig('newsletterpopup/general/content')) echo Mage::getStoreConfig('newsletterpopup/general/content'); else echo 'Subscribe to the Black & White mailing list to receive updates on new arrivals, special offers and other discount information.'; ?></label>
+				</div>
+				<div class="input-box">
+				   <input type="text" name="email" id="newsletter_subscribe" title="<?php echo $this->__('Sign up for our newsletter') ?>" class="input-text required-entry validate-email" />
+				</div>
+				<div class="actions">
+					<button type="submit" title="<?php echo $this->__('Subscribe') ?>" class="button_subscribe"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+				</div>
+			</div>
+		</form>
+		<script type="text/javascript">
+		//<![CDATA[
+			var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate');
+		//]]>
+		</script>
+		<div class="subscribe-bottom">
+			<input type="checkbox" id="newsletter_popup_dont_show_again"/>
+			<label for="newsletter_popup_dont_show_again"><?php echo $this->__("Don't show this popup again"); ?></label>
+		</div>
+	</div>
+</div>
+<?php } ?>

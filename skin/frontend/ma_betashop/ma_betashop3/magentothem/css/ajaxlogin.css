@@ -1,0 +1,35 @@
+.account-login{ padding: 20px;}
+ .ajax-body-login, .ajax-body-logout {
+    display: none;
+    background-color: #FFFFFF;
+    opacity: 1;
+    position: fixed;
+    z-index: 1200;
+    width: 600px;
+    height: 400px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: auto !important;
+}
+
+#ajax-login-block, #ajax-logout-block {
+    display: none;
+    background-color : black;
+    height : 100%;
+    opacity : 0.35;
+    position : fixed;
+    top : 0;
+    width : 100%;
+    z-index : 1031
+}
+
+.ajax-img, .ajax-img-rg, .error-msg { display: none}
+.ajax-load-img { position: fixed; top: 50%; left: 0; right: 0; bottom: 0; text-align: center; z-index: 9999; margin: auto;display: none }
+.ajax-body-login .a-close-frm { position: absolute; top: 10px; right: 10px; color: #ff0000;}
+@media (max-width: 680px) { 
+    .ajax-body-login { width: 95%; height: 80%;}
+    
+}

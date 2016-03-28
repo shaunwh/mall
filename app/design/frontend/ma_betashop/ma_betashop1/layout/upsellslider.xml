@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="root">
+            <block type="upsellslider/page_html_head" name="upsell_slider" as="upsell_slider"/>
+        </reference>
+        <reference name="head">
+			<action method="addCss" ifconfig="upsellslider/upsellslider_config/enabled"><stylesheet>magentothem/css/owl.carousel.css</stylesheet></action>
+            <action method="addJs" ifconfig="upsellslider/upsellslider_config/enabled"><script>magentothem/ma.jq.slide.js</script></action>
+            <action method="addJs" ifconfig="upsellslider/upsellslider_config/enabled"><script>magentothem/owl.carousel.js</script></action>
+        </reference>
+    </default>
+</layout> 

@@ -1,0 +1,31 @@
+<?php /* @var $this Magentothem_Quickview_Block_Quickview */ ?>
+<?php $elements = $this->getQuickViewElements(); ?>
+<div class="quickview-container">
+	<a href='javascript:void(0);' class='a-qv-close' onclick='closeQVFrame()'>Close</a>
+	<div id="quickview-content">
+		<!-- Load quickview content into here -->
+	</div>
+</div>
+
+
+<div id="quickview-bg-block">
+    <!-- Quick View deep background -->
+</div>
+
+<div class="quickview-load-img">
+    <img alt="" src="<?php echo $this->getAjaxLoadImage() ?>" />
+</div>
+
+<?php if($this->isEnabled()): ?>
+    <script type="text/javascript">
+        <?php $flag = 'false'; if($this->isCategoryEnabled()) $flag = 'true'; ?>
+        if (typeof MA == 'undefined') MA = {};
+        MA.QuickView = {
+            CATEGORY_ENABLE : '<?php echo $flag ?>',
+            BASE_URL        : '<?php echo $this->getUrl() ?>'
+        };
+        <?php foreach($elements as $el): ?>
+            initQuickButton('<?php echo $el ?>');
+        <?php endforeach; ?>
+    </script>
+<?php endif; ?>

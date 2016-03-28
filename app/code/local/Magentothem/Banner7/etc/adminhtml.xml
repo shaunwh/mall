@@ -1,0 +1,44 @@
+<?xml version="1.0"?> 
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<banner7>
+										<title>Banner7</title>
+									</banner7>
+								</children>
+							</config>
+						</children>
+					</system>	
+					<magentothem translate="title" module="banner7">
+						<title>Magentothem</title>
+						<sort_order>71</sort_order>               
+						<children>
+							<banner7 translate="title" module="banner7">
+								<title>Banner7</title>
+								<sort_order>0</sort_order>
+								<children>
+									<items translate="title" module="banner7">
+										<title>Manage Items</title>
+										<sort_order>0</sort_order>
+										<action>banner7/adminhtml_banner7</action>
+									</items>
+									<configuration>
+										<title>Configuration</title>
+										<sort_order>1</sort_order>
+										<action>adminhtml/system_config/edit/section/banner7</action>
+									</configuration>
+								</children>
+							</banner7>
+						</children>
+					</magentothem>					
+				</children>
+			</admin>
+        </resources>
+	</acl>
+</config>

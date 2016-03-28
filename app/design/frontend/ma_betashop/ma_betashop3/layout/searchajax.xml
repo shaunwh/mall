@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>magentothem/searchajax/css/searchajax.css</stylesheet></action>
+            <action method="addJs"><script>magentothem/ma.jq.slide.js</script></action>
+            <block type="searchajax/searchajax" name="searchajax" template="searchajax/searchajax.phtml" />
+
+        </reference>
+    </default>
+    <searchajax_index_index>
+        <reference name="content">
+            <block type="searchajax/searchajax" name="searchajax" template="searchajax/searchajax.phtml" />
+        </reference>
+    </searchajax_index_index>
+</layout> 

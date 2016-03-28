@@ -1,0 +1,39 @@
+<?xml version="1.0"?> 
+<config>
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+									<newproductslider>
+										<title>New Product Slider</title>
+									</newproductslider>
+								</children>
+							</config>
+						</children>
+					</system>		
+					<magentothem translate="title" module="newproductslider">
+						<title>Magentothem</title>
+						<sort_order>71</sort_order>               
+						<children>
+							<newproductslider translate="title" module="newproductslider">
+								<title>New Products Slider</title>
+								<sort_order>0</sort_order>
+								<children>
+									<configuration>
+										<title>Configuration</title>
+										<sort_order>1</sort_order>
+										<action>adminhtml/system_config/edit/section/newproductslider</action>
+									</configuration>
+								</children>
+							</newproductslider>
+						</children>
+					</magentothem>					
+				</children>
+			</admin>
+        </resources>
+	</acl>
+</config>

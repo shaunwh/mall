@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <cms_index_index>
+		<reference name="head">
+            <action method="addCss" ifconfig="banner7/banner7_config/enabled"><stylesheet>magentothem/css/ma.banner7.css</stylesheet></action>
+            <action method="addCss" ifconfig="banner7/banner7_config/enabled"><stylesheet>magentothem/css/animate.css</stylesheet></action>
+			<action method="addJs" ifconfig="banner7/banner7_config/enabled"><script>magentothem/ma.jq.slide.js</script></action>
+			<action method="addJs" ifconfig="banner7/banner7_config/enabled"><script>magentothem/ma.flexslider.js</script></action>
+			<action method="addJs" ifconfig="banner7/banner7_config/enabled"><script>magentothem/ma.nivo.js</script></action>
+        </reference>
+        <reference name="ma_banner">
+            <!-- <block type="banner7/banner7" before="-" name="banner7" template="magentothem/banner7/banner7.phtml" /> -->
+        </reference>
+    </cms_index_index>
+</layout> 

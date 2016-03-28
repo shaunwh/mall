@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss" ifconfig="vmegamenu/general/leftmenu"><stylesheet>magentothem/css/leftvmegamenu.css</stylesheet></action>
+            <action method="addCss" ifconfig="vmegamenu/general/rightmenu"><stylesheet>magentothem/css/rightvmegamenu.css</stylesheet></action>
+            <action method="addJs" ifConfig="vmegamenu/general/enabled"><script>magentothem/ma.jq.slide.js</script></action>
+        </reference>
+        <!-- <reference name="left">
+            <block type="vmegamenu/vmegamenu" name="catalog.leftvmegamenu" as="ma_megamenu" before="-">
+                <action method="setTemplate" ifconfig="vmegamenu/general/leftmenu"><template>magentothem/vmegamenu/vmegamenu.phtml</template></action>
+            </block>
+        </reference> -->
+        <!-- <reference name="right">
+            <block type="vmegamenu/vmegamenu" name="catalog.rightvmegamenu" before="catalog.rightnav">
+                <action method="setTemplate" ifconfig="vmegamenu/general/rightmenu"><template>magentothem/vmegamenu/vmegamenu.phtml</template></action>
+            </block>    
+        </reference> -->
+    </default>
+</layout> 

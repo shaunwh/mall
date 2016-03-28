@@ -1,0 +1,34 @@
+<div class="block-group">
+	<div class="container">
+		<?php  echo $this->getLayout()->createBlock('featuredproductslider/featuredproductslider')->setTemplate('magentothem/featuredproductslider/featuredproductslider.phtml')->toHtml(); ?>
+	</div>
+</div>
+<div class="block-end">
+	<div class="container">
+		<?php  echo $this->getLayout()->createBlock('newproductslider/newproductslider')->setTemplate('magentothem/newproductslider/newproductslider.phtml')->toHtml(); ?>
+	</div>
+</div>
+<div class="catlist-home">
+	<div class="container">
+		<?php  echo $this->getLayout()->createBlock('catlist/catlist')->setTemplate('magentothem/catlist/catlist.phtml')->toHtml(); ?>
+	</div>
+</div>
+<div class="blog-slider">
+	<div class="container">
+		<?php  echo $this->getLayout()->createBlock('blog/menu_sidebar')->setTemplate('magentothem_blog/blog_slide.phtml')->toHtml(); ?>
+	</div>
+</div>
+<div class="brand-slider">
+	<div class="container">
+		<div class="container-inner">
+			<?php  echo $this->getLayout()->createBlock('brandslider/brandslider')->setTemplate('magentothem/brandslider/brandslider.phtml')->toHtml(); ?>
+		</div>
+	</div>
+</div>
+<div class="block-bottom">
+	<div class="container">
+		<div class="container-inner">
+			<?php  echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_bottom')->toHtml(); ?>
+		</div>
+	</div>
+</div>
