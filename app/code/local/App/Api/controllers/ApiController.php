@@ -1196,16 +1196,6 @@ class App_Api_ApiController extends Mage_Core_Controller_Front_Action{
             "postcode" => $paras['postcode'],
             "telephone" => $paras['telephone']
         );
-        /*$addressData = array(
-            "firstname" => "li",
-            "lastname" => "ha",
-            "company" => "北京科技",
-            "street" => "北京大街",
-            "city" => "北京",
-            "country_id" => "CN",
-            "postcode" => "100999",
-            "telephone" => "13333333332"
-        );*/
         $addressErrors  = $addressForm->validateData($addressData);
         if ($addressErrors !== true) {
             $errors = $addressErrors;
